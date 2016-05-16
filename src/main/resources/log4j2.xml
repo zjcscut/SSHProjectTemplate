@@ -30,7 +30,7 @@
         <Logger name="detailLogger" level="warn">
             <AppenderRef ref="DetailLog"/>
         </Logger>
-        <Root level="info">
+        <Root level="DEBUG">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
