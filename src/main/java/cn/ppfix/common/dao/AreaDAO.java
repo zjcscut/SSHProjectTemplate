@@ -1,10 +1,7 @@
 package cn.ppfix.common.dao;
 
-import cn.ppfix.common.entity.Area;
-import org.hibernate.Criteria;
+import cn.ppfix.entity.Area;
 import org.hibernate.Query;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,12 +18,9 @@ public class AreaDAO extends BaseDAO<Area> {
         return Area.class;
     }
 
-    public List<Area> findAreaByName(String name) {
-//        Criteria criteria = getSession().createCriteria(Area.class);
-//        criteria.add(Restrictions.like("name", name, MatchMode.ANYWHERE));
-//        return criteria.list();
-        Query query = getSession().createQuery("from Area a where a.name = :name");
-        query.setString("name", name);
-        return query.list();
+    public Area findArea() {
+        Query query = getSession().createQuery("from Area a where a.id = :id");
+        query.setInteger("id", 2);
+        return (Area) query.list().get(0);
     }
 }

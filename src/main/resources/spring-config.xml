@@ -74,7 +74,7 @@
             </props>
         </property>
         <!--<property name="mappingLocations" value="classpath:/mappings/*hbm.xml"/>-->
-        <property name="mappingLocations" value="classpath:/cn/ppfix/common/entity/*.hbm.xml"/>
+        <property name="mappingLocations" value="classpath:/cn/ppfix/entity/*.hbm.xml"/>
 
     </bean>
 

@@ -21,8 +21,8 @@ public class AreaController {
 
     @RequestMapping(value = "area.html", method = RequestMethod.GET)
     @ResponseBody
-    public String queryArea(@RequestParam(value = "name") String name) {
-        return JsonUtil.toJson(areaService.findAreaByName(name));
+    public String queryArea() {
+        return JsonUtil.toJson(areaService.findArea().getParent());
     }
 
 }

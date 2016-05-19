@@ -8,7 +8,11 @@
 
 package cn.ppfix;
 
+import cn.ppfix.entity.Area;
+import cn.ppfix.service.AreaService;
+import cn.ppfix.utils.JsonUtil;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,14 +24,15 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class TestScope extends BasicTest {
 
+    @Autowired
+    private AreaService areaService;
     @Test
     public void Test1() {
-        ApplicationContext ac = new ClassPathXmlApplicationContext(
-                new String[]{
-                        "classpath:spring-config.xml"
-                }
-        );
-
-        ac.getBean("bean");
+        Area  a = areaService.findArea();
+        System.out.println("id--" + a.getId());
+        System.out.println("name--" + a.getName());
+        System.out.println("parant--" + a.getParent());
+        System.out.println("nodes--" + a.getNodes());
+        System.out.println("json--" + JsonUtil.toJson(a));
     }
 }
