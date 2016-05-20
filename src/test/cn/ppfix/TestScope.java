@@ -36,8 +36,8 @@ public class TestScope extends BasicTest {
         Area a = areaService.findArea();
         System.out.println("id--" + a.getId());
         System.out.println("name--" + a.getName());
-        System.out.println("parant--" + a.getParent());
-        System.out.println("nodes--" + a.getNodes());
+//        System.out.println("parant--" + a.getParent());
+//        System.out.println("nodes--" + a.getNodes());
         System.out.println("json--" + JsonUtil.toJson(a));
     }
 
@@ -55,5 +55,10 @@ public class TestScope extends BasicTest {
     public void Test3() {
 //        categoryService.saveCategoryWithCascade();
         categoryService.modifyCategoryAssociation();
+    }
+
+    @Test
+    public void Test4(){
+        System.out.println(JsonUtil.toJson(areaService.getByCondition()));
     }
 }

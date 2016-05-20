@@ -22,7 +22,7 @@ public class AreaController {
     @RequestMapping(value = "area.html", method = RequestMethod.GET)
     @ResponseBody
     public String queryArea() {
-        return JsonUtil.toJson(areaService.findArea().getParent());
+        return JsonUtil.toJson(areaService.findArea());
     }
 
 }
