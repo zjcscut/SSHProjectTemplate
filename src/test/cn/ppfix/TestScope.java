@@ -10,6 +10,7 @@ package cn.ppfix;
 
 import cn.ppfix.entity.Area;
 import cn.ppfix.service.AreaService;
+import cn.ppfix.service.CategoryService;
 import cn.ppfix.utils.JsonUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,35 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class TestScope extends BasicTest {
 
+    private static final String XX = "(1,2)";
     @Autowired
     private AreaService areaService;
+    @Autowired
+    private CategoryService categoryService;
+
     @Test
     public void Test1() {
-        Area  a = areaService.findArea();
+        Area a = areaService.findArea();
         System.out.println("id--" + a.getId());
         System.out.println("name--" + a.getName());
         System.out.println("parant--" + a.getParent());
         System.out.println("nodes--" + a.getNodes());
         System.out.println("json--" + JsonUtil.toJson(a));
+    }
+
+    @Test
+    public void Test2() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("from OrderInfo o where o.isDelete = '0' ")
+                .append("and o.customerId = :userId ")
+                .append("and o.orderStatus in ")
+                .append(XX);
+        System.out.println(stringBuilder.toString());
+    }
+
+    @Test
+    public void Test3() {
+//        categoryService.saveCategoryWithCascade();
+        categoryService.modifyCategoryAssociation();
     }
 }
