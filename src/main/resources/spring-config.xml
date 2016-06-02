@@ -96,7 +96,8 @@
 
 
     <aop:config>
-        <aop:pointcut id="service" expression="execution(* cn.ppfix.service.*Service.*(..))"/>
+        <aop:pointcut id="service"
+                      expression="execution(* cn.ppfix.service.*Service.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="service"/>
     </aop:config>
 

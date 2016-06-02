@@ -16,13 +16,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class AreaController {
 
-    @Autowired
-    private AreaService areaService;
+	@Autowired
+	private AreaService areaService;
 
-    @RequestMapping(value = "area.html", method = RequestMethod.GET)
-    @ResponseBody
-    public String queryArea() {
-        return JsonUtil.toJson(areaService.findArea());
-    }
+	@RequestMapping(value = "area.html", method = RequestMethod.GET)
+	@ResponseBody
+	public String queryArea() {
+		return JsonUtil.toJson(areaService.findArea());
+	}
+
+	@RequestMapping(value = "area/update.html")
+	@ResponseBody
+	public String updateArea(@RequestParam(value = "id") Integer id) {
+		areaService.updateArea(id);
+		return JsonUtil.toJson(areaService.findById(id));
+	}
 
 }

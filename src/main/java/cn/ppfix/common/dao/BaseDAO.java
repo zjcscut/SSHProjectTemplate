@@ -73,6 +73,16 @@ public abstract class BaseDAO<T> {
     }
 
     /**
+     * 获得id对象
+     *
+     * @param id
+     * @return
+     */
+    public T get(Integer id) {
+        return get(id, false);
+    }
+
+    /**
      * 通过id删除对象
      *
      * @param id
@@ -83,6 +93,19 @@ public abstract class BaseDAO<T> {
             getSession().delete(t);
         }
     }
+
+    /**
+     * 通过id删除对象
+     *
+     * @param id
+     */
+    public void del(Integer id) {
+        T t = get(id);
+        if (t != null) {
+            getSession().delete(t);
+        }
+    }
+
 
     /**
      * 删除对象
@@ -101,6 +124,25 @@ public abstract class BaseDAO<T> {
      * @return
      */
     protected T get(Long id, boolean lock) {
+        T entity;
+        if (lock) {
+            // LockMode.UPGRADE:不管缓存中是否存在对象,总是通过select语句到数据库中加载该对象
+            entity = (T) getSession().get(getEntityClass(), id,
+                    LockMode.UPGRADE);
+        } else {
+            entity = (T) getSession().get(getEntityClass(), id);
+        }
+        return entity;
+    }
+
+    /**
+     * 查询对象
+     *
+     * @param id
+     * @param lock 查询对象方式
+     * @return
+     */
+    protected T get(Integer id, boolean lock) {
         T entity;
         if (lock) {
             // LockMode.UPGRADE:不管缓存中是否存在对象,总是通过select语句到数据库中加载该对象

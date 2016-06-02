@@ -1,6 +1,7 @@
 package cn.ppfix.entity;
 
 import javax.persistence.Transient;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,6 +13,8 @@ public class Area implements java.io.Serializable {
     private Integer id;
     private String name;
     private Integer pid;
+
+    private Set<District> districts = new HashSet<>();
 
     public Area() {
     }
@@ -40,7 +43,15 @@ public class Area implements java.io.Serializable {
         this.pid = pid;
     }
 
-    //    private Area parent;  //父节点
+    public Set<District> getDistricts() {
+        return districts;
+    }
+
+    public void setDistricts(Set<District> districts) {
+        this.districts = districts;
+    }
+
+//    private Area parent;  //父节点
 //    private Set<Area> nodes; //子节点
 //
 //    public Area() {
