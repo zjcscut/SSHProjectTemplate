@@ -10,46 +10,48 @@ import java.util.Set;
  */
 public class Area implements java.io.Serializable {
 
-    private Integer id;
-    private String name;
-    private Integer pid;
+	private static final long serialVersionUID = -6579533328390250520L;
 
-    private Set<District> districts = new HashSet<>();
+	private Integer id;
+	private String name;
+	private Integer pid;
 
-    public Area() {
-    }
+	private Set<District> districts = new HashSet<>();
 
-    public Integer getId() {
-        return id;
-    }
+	public Area() {
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Integer getPid() {
-        return pid;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
+	public Integer getPid() {
+		return pid;
+	}
 
-    public Set<District> getDistricts() {
-        return districts;
-    }
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
 
-    public void setDistricts(Set<District> districts) {
-        this.districts = districts;
-    }
+	public Set<District> getDistricts() {
+		return districts;
+	}
+
+	public void setDistricts(Set<District> districts) {
+		this.districts = districts;
+	}
 
 //    private Area parent;  //父节点
 //    private Set<Area> nodes; //子节点

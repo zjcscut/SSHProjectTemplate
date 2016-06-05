@@ -4,6 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:cache="http://www.springframework.org/schema/cache"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
        http://www.springframework.org/schema/tx
@@ -11,7 +12,9 @@
         http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+       http://www.springframework.org/schema/context/spring-context-4.2.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache-4.2.xsd">
 
     <!--扫描除了Controller之外的类-->
     <context:component-scan base-package="cn.ppfix">
@@ -69,6 +72,15 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="format_sql">false</prop>
+                <!-- 开启查询缓存 -->
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <!-- 开启二级缓存 -->
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <!-- 高速缓存提供程序 -->
+                <!-- 由于spring也使用了Ehcache, 保证双方都使用同一个缓存管理器 -->
+                <prop key="hibernate.cache.region.factory_class">
+                    org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+                </prop>
                 <!--create validate -->
                 <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
             </props>
@@ -103,5 +115,20 @@
 
     <!--默认开启Cglib代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 启用缓存注解功能，这个是必须的，否则注解不会生效，另外，该注解一定要声明在spring主配置文件中才会生效 -->
+    <cache:annotation-driven cache-manager="ehcacheManager"/>
+
+    <!-- cacheManager工厂类，指定ehcache.xml的位置 -->
+    <bean id="ehcacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+        <!-- 由于hibernate也使用了Ehcache, 保证双方都使用同一个缓存管理器 -->
+        <property name="shared" value="true"/>
+    </bean>
+
+    <!-- 声明cacheManager -->
+    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcacheManagerFactory"/>
+    </bean>
 
 </beans>

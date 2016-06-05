@@ -38,11 +38,12 @@
 
     <!--拦截静态资源 location为本地路径,mapping为映射路径-->
     <mvc:resources location="/res/" mapping="/res/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
 
 
     <!-- 定义视图解析器 -->
     <bean id="resourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="prefix" value="/"/>
         <property name="suffix" value=".jsp"/>
         <property name="contentType" value="text/html;charset=UTF-8"/>
     </bean>

@@ -66,4 +66,9 @@ public class AreaService {
 		areaDAO.update(a);
 	}
 
+	public Area getFromSecondCache(Integer id) {
+		areaDAO.monitorSecondLevelCache();  //查看二级缓存
+		return areaDAO.selectFromSecondCache(id);
+	}
+
 }
