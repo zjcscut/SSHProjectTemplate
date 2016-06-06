@@ -123,6 +123,25 @@
             <version>1.2.5</version>
         </dependency>
 
+        <!--ehcache-->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+        <!--ehcache slf4j依赖-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <!--hibernate-ehcache-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
