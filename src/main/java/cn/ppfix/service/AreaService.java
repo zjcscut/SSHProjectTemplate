@@ -71,4 +71,5 @@ public class AreaService {
 		return areaDAO.selectFromSecondCache(id);
 	}
 
+
 }
