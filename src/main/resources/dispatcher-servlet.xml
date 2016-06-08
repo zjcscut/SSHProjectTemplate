@@ -37,7 +37,7 @@
     </mvc:annotation-driven>
 
     <!--拦截静态资源 location为本地路径,mapping为映射路径-->
-    <mvc:resources location="/res/" mapping="/res/**"/>
+    <!--<mvc:resources location="/res/" mapping="/res/**"/>-->
     <mvc:resources location="/js/" mapping="/js/**"/>
 
 
