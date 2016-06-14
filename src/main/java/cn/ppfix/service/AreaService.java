@@ -74,4 +74,8 @@ public class AreaService {
         return areaDAO.monitorSecondLevelCache();  //查看二级缓存
     }
 
+    public List<Area> selectAllArea() {
+        return areaDAO.getObjectList(null);
+    }
+
 }
