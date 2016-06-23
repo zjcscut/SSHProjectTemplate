@@ -13,7 +13,11 @@ public class District {
     public District() {
     }
 
-    public Integer getId() {
+	public District(String name) {
+		this.name = name;
+	}
+
+	public Integer getId() {
         return id;
     }
 
