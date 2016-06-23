@@ -7,21 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="z" uri="https://github/zjcscut/taglib" %>
 <html>
 <head>
     <title>地址多个</title>
 </head>
 <body>
-<c:if test="${ok}">
-    <c:forEach var="item" items="${areas}">
-        <ul>
-            <li>id:${item.id}</li>
-            <li>name:${item.name}</li>
-            <li>pid:${item.pid}</li>
-        </ul>
-    </c:forEach>
-
-</c:if>
+<h1>四舍五入</h1>
+<h3><z:roundHalfUp value="6.4455" leaveBits="2"/></h3>
 
 </body>
 </html>
