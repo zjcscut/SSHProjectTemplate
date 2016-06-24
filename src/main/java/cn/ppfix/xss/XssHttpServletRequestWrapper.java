@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.*;
 
 /**
+ * Xss攻击防御，配合XssFilter使用，将有可能产生Xss攻击的半角符号全部转换成全角符号
  * @author zhangjinci
  * @version 2016/6/23 16:01
  */

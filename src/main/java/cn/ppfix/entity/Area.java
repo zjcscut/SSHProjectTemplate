@@ -16,7 +16,7 @@ public class Area implements java.io.Serializable {
 	private String name;
 	private Integer pid;
 
-	private Set<District> districts = new HashSet<>();
+//	private Set<District> districts = new HashSet<>();
 
 	public Area() {
 	}
@@ -45,13 +45,13 @@ public class Area implements java.io.Serializable {
 		this.pid = pid;
 	}
 
-	public Set<District> getDistricts() {
-		return districts;
-	}
-
-	public void setDistricts(Set<District> districts) {
-		this.districts = districts;
-	}
+//	public Set<District> getDistricts() {
+//		return districts;
+//	}
+//
+//	public void setDistricts(Set<District> districts) {
+//		this.districts = districts;
+//	}
 
 //    private Area parent;  //父节点
 //    private Set<Area> nodes; //子节点
