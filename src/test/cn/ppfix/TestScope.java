@@ -13,10 +13,16 @@ import cn.ppfix.entity.Area;
 import cn.ppfix.service.AreaService;
 import cn.ppfix.service.CategoryService;
 import cn.ppfix.utils.JsonUtil;
+import cn.zjcscut.dao.common.SqlDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import sun.security.krb5.internal.PAData;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * created by IntelliJ IDEA
@@ -31,6 +37,9 @@ public class TestScope extends BasicTest {
 	private AreaService areaService;
 	@Autowired
 	private CategoryService categoryService;
+
+//	@Autowired
+//	private SqlDao sqlDao;
 //
 //    @Autowired
 //    private AreaDAO areaDAO;
@@ -90,6 +99,14 @@ public class TestScope extends BasicTest {
 
 	@Test
 	public void Test9() {
-		areaService.updateArea(1);
+		Map<String,String> params = new HashMap<>();
+//		params.put("id","1,2,3");
+		params.put("pid","2");
+		params.put("name","天河");
+		Map<String,String> filter = new HashMap<>();
+//		filter.put("id","IN");
+		filter.put("name","LIKE");
+        List<Area> list = areaService.selectBySqlContext(params,filter);
+		System.out.println("list--> " + JsonUtil.toJson(list));
 	}
 }
