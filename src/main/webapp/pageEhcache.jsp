@@ -3,6 +3,7 @@
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
+<%@ taglib prefix="z" uri="https://github/zjcscut/taglib" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -27,6 +28,7 @@
     </script>
 </head>
 <body>
+<z:referer site="localhost:8080" page="/index.jsp"/>
 <h1><%=new Date()%>
 </h1>
 <h1>这是一个练习</h1>

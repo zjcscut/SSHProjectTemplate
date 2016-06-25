@@ -18,58 +18,64 @@ import java.util.Map;
 @Service
 public class AreaService {
 
-	@Autowired
-	private AreaDAO areaDAO;
+    @Autowired
+    private AreaDAO areaDAO;
 
-	public Area findById(Integer id) {
-		return areaDAO.get(id);
-	}
+    public Area findById(Integer id) {
+        return areaDAO.get(id);
+    }
 
-	public Area findArea() {
-		return areaDAO.findArea();
-	}
+    public Area findArea() {
+        return areaDAO.findArea();
+    }
 
-	public List<Area> getByCondition() {
-		Map<String, Object> params = new HashMap<>();
-		Object[] ids = {1, 2, 3};
-		params.put("id", ids);
-		return areaDAO.getObjectList(params);
-	}
+    public List<Area> getByCondition() {
+        Map<String, Object> params = new HashMap<>();
+        Object[] ids = {1, 2, 3};
+        params.put("id", ids);
+        return areaDAO.getObjectList(params);
+    }
 
-	public AreaDTO getBySQLAndTransBean() {
-		return areaDAO.getByNativeSQLAndTransferBean(1);
-	}
+    public AreaDTO getBySQLAndTransBean() {
+        return areaDAO.getByNativeSQLAndTransferBean(1);
+    }
 
-	public Area getByNativeSQL() {
-		return areaDAO.getByNativeSQL(1);
-	}
+    public Area getByNativeSQL() {
+        return areaDAO.getByNativeSQL(1);
+    }
 
-	public Area getByHQL() {
-		return areaDAO.selectByHql(2);
-	}
+    public Area getByHQL() {
+        return areaDAO.selectByHql(2);
+    }
 
-	//删除area，级联删除district
-	public void deleteArea() {
-		areaDAO.del(2);
-	}
-
-
-	//HQL联查
-	public AreaDTO selectByHQL() {
-		return areaDAO.selectByHqlTransDTO(1);
-	}
+    //删除area，级联删除district
+    public void deleteArea() {
+        areaDAO.del(2);
+    }
 
 
-	public void updateArea(Integer id) {
-		Area a = areaDAO.selectByHql(id);
-		a.setName("update测试");
-		areaDAO.update(a);
-	}
+    //HQL联查
+    public AreaDTO selectByHQL() {
+        return areaDAO.selectByHqlTransDTO(1);
+    }
 
-	public Area getFromSecondCache(Integer id) {
-		areaDAO.monitorSecondLevelCache();  //查看二级缓存
-		return areaDAO.selectFromSecondCache(id);
-	}
 
+    public void updateArea(Integer id) {
+        Area a = areaDAO.selectByHql(id);
+        a.setName("update测试");
+        areaDAO.update(a);
+    }
+
+    public Area getFromSecondCache(Integer id) {
+        return areaDAO.selectFromSecondCache(id);
+    }
+
+    public Map getSecondLevelCacheInfo() {
+        return areaDAO.monitorSecondLevelCache();  //查看二级缓存
+    }
+
+    public List<Area> selectAllArea() {
+        return areaDAO.getObjectList(null);
+    }
 
 }

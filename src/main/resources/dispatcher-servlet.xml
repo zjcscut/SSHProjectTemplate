@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         http://www.springframework.org/schema/context
-          http://www.springframework.org/schema/context/spring-context-4.2.xsd
-           http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/context/spring-context-4.2.xsd
+         http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
@@ -40,8 +40,16 @@
     </mvc:annotation-driven>
 
     <!--拦截静态资源 location为本地路径,mapping为映射路径-->
-    <mvc:resources location="/res/" mapping="/res/**"/>
+    <!--<mvc:resources location="/res/" mapping="/res/**"/>-->
     <mvc:resources location="/js/" mapping="/js/**"/>
+
+    <!--自定义Xss拦截器-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<bean class="cn.ppfix.filter.XssFilterAdapter"/>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
 
 
     <!-- 定义视图解析器 -->
@@ -53,9 +61,9 @@
 
     <!--上传文件配置-->
     <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
-    <!--<property name="defaultEncoding" value="utf-8"/>-->
-    <!--<property name="maxUploadSize" value="10485760"/>-->
-    <!--<property name="maxInMemorySize" value="40960"/>-->
+        <!--<property name="defaultEncoding" value="utf-8"/>-->
+        <!--<property name="maxUploadSize" value="10485760"/>-->
+        <!--<property name="maxInMemorySize" value="40960"/>-->
     <!--</bean>-->
     <!--默认开启Cglib代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
