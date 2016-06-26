@@ -24,7 +24,7 @@ public class SqlDao {
         return sessionFactory.getCurrentSession();
     }
 
-    public List<Area> selectAreaByCondition(Map<String, String> params, Map<String, String> filter) {
+    public List<Area> selectAreaByCondition(Map<String, Object> params, Map<String, String> filter) {
         Criteria criteria = getSession().createCriteria(Area.class);
         SqlContextUtils.buildCriteriaByParams(params, filter, criteria);
         return criteria.list();

@@ -82,7 +82,7 @@ public class AreaService {
         return areaDAO.getObjectList(null);
     }
 
-    public List<Area> selectBySqlContext(Map<String,String> params,Map<String,String> filter){
+    public List<Area> selectBySqlContext(Map<String,Object> params,Map<String,String> filter){
         return  sqlDao.selectAreaByCondition(params, filter);
     }
 

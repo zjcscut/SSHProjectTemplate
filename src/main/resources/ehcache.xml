@@ -4,7 +4,7 @@
          updateCheck="false" monitoring="autodetect"
          dynamicConfig="true">
     <!--硬盘保存路径-->
-    <diskStore path="D:\Temp\cache"/>
+    <diskStore path="F:\Temp\cache"/>
     <defaultCache
             maxEntriesLocalHeap="10000"
             eternal="false"

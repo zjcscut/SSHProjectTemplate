@@ -99,12 +99,12 @@ public class TestScope extends BasicTest {
 
 	@Test
 	public void Test9() {
-		Map<String,String> params = new HashMap<>();
-//		params.put("id","1,2,3");
-		params.put("pid","2");
+		Map<String,Object> params = new HashMap<>();
+		params.put("id","1,2,3");
+		params.put("pid",2);
 		params.put("name","天河");
 		Map<String,String> filter = new HashMap<>();
-//		filter.put("id","IN");
+		filter.put("id","INTEGERIN");
 		filter.put("name","LIKE");
         List<Area> list = areaService.selectBySqlContext(params,filter);
 		System.out.println("list--> " + JsonUtil.toJson(list));
