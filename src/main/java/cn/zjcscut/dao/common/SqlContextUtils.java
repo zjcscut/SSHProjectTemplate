@@ -9,7 +9,6 @@ import org.hibernate.criterion.Restrictions;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author zhangjinci
@@ -36,6 +35,10 @@ public class SqlContextUtils {
 
 
     private static final String IN_SEPARATOR = ","; //IN 查询的分隔符
+
+    private static final String STRING_SEPARATOR_SEMICOLON = ";"; // 查询的分隔符
+
+    private static final String STRING_SEPARATOR_COMMA = ","; // 查询的分隔符
 
     public void buildEqualCriteriaByParams(Map<String, Object> params) {
         buildEqualCriteriaByParams(params, null);
@@ -241,12 +244,12 @@ public class SqlContextUtils {
 
     //把String按规则分割放进一个Map
     private static Map<String, String> stringToMap(String orderBy) {
-        String[] entries = orderBy.split(";");
+        String[] entries = orderBy.split(STRING_SEPARATOR_SEMICOLON);
         if (entries.length > 0) {
             Map<String, String> map = new HashMap<>();
             for (String entry : entries
                     ) {
-                String[] single = entry.split(",");
+                String[] single = entry.split(STRING_SEPARATOR_COMMA);
                 map.put(single[0], single[1]);
             }
             return map;
