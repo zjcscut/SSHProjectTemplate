@@ -8,17 +8,12 @@
 
 package cn.ppfix;
 
-import cn.ppfix.common.dao.AreaDAO;
 import cn.ppfix.entity.Area;
 import cn.ppfix.service.AreaService;
 import cn.ppfix.service.CategoryService;
 import cn.ppfix.utils.JsonUtil;
-import cn.zjcscut.dao.common.SqlDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import sun.security.krb5.internal.PAData;
 
 import java.util.HashMap;
 import java.util.List;

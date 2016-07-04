@@ -3,11 +3,9 @@ package cn.ppfix.service;
 import cn.ppfix.common.dao.AreaDAO;
 import cn.ppfix.dto.AreaDTO;
 import cn.ppfix.entity.Area;
-import cn.zjcscut.dao.common.SqlDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +20,7 @@ public class AreaService {
     @Autowired
     private AreaDAO areaDAO;
 
-    @Autowired
-    private SqlDao sqlDao;
+
 
     public Area findById(Integer id) {
         return areaDAO.get(id);
@@ -83,7 +80,8 @@ public class AreaService {
     }
 
     public List<Area> selectBySqlContext(Map<String,Object> params,Map<String,String> filter){
-        return  sqlDao.selectAreaByCondition(params, filter);
+//        return  sqlDao.selectAreaByCondition(params, filter);
+		return null;
     }
 
 }

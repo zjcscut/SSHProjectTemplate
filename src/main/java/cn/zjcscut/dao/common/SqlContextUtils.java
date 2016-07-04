@@ -81,7 +81,8 @@ public class SqlContextUtils {
     }
 
     //重载方法，加入排序Map
-    public void buildCriteriaByParams(Map<String, Object> params, Map<String, String> filter, Map<String, String> orderBy) {
+    public void buildCriteriaByParams(Map<String, Object> params, Map<String, String> filter,
+									  Map<String, String> orderBy) {
         buildCriteriaByParams(params, filter);
         for (Map.Entry<String, String> entry : orderBy.entrySet()) {
             buildOrderByCriteria(entry.getKey(), entry.getValue());
@@ -89,7 +90,8 @@ public class SqlContextUtils {
     }
 
     //重载方法，加入排序String，key-value之间用";"分隔
-    public void buildCriteriaByParams(Map<String, Object> params, Map<String, String> filter, String orderBy) {
+    public void buildCriteriaByParams(Map<String, Object> params, Map<String, String> filter,
+									  String orderBy) {
         buildCriteriaByParams(params, filter);
         Map<String, String> map = stringToMap(orderBy);
         if (map != null && !map.isEmpty()) {
@@ -218,7 +220,8 @@ public class SqlContextUtils {
     }
 
     //相当于between
-    public SqlContextUtils buildBetweenCriteria(String field, Object preField, Object endField) {
+    public SqlContextUtils buildBetweenCriteria(String field, Object preField,
+												Object endField) {
         criteria.add(Restrictions.between(field, preField, endField));
         return this;
     }

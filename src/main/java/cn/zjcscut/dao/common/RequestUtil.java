@@ -8,6 +8,7 @@ package cn.zjcscut.dao.common;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.TreeMap;
@@ -26,21 +27,24 @@ public final class RequestUtil {
 		return params(request, null);
 	}
 
-	public static Map<String, Object> params(HttpServletRequest request, String prefix) {
+	public static Map<String, Object> params(HttpServletRequest request, String excludePrefix) {
 		Assert.notNull(request, "Request must not be null");
 		Enumeration<String> paramNames = request.getParameterNames();
 		TreeMap<String, Object> params = new TreeMap<>();
-		if (prefix == null) {
-			prefix = "";
+		if (excludePrefix == null || "".equals(excludePrefix)) {
+			excludePrefix = "";
 		}
 		while (paramNames != null && paramNames.hasMoreElements()) {
 			String paramName = paramNames.nextElement();
-			if ("".equals(prefix) || paramName.startsWith(prefix)) {
-				String unprefixed = paramName.substring(prefix.length());
-				String[] values = request.getParameterValues(paramName);
-				if (values != null && values.length > 0) {
-					params.put(unprefixed, values);
-				}
+			String unprefixed = null;
+			if ("".equals(excludePrefix)) {
+				unprefixed = paramName.substring(excludePrefix.length());
+			} else if (paramName.startsWith(excludePrefix)) {
+				unprefixed = paramName.substring(excludePrefix.length() + 1);
+			}
+			String values = Arrays.toString(request.getParameterValues(paramName));
+			if (!values.isEmpty()) {
+				params.put(unprefixed, values.substring(1, values.length() - 1));
 			}
 		}
 		return params;

@@ -163,6 +163,13 @@
             <version>4.1</version>
         </dependency>
 
+        <!--&lt;!&ndash;Spring&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-core</artifactId>-->
+            <!--<version>4.3.0.RELEASE</version>-->
+        <!--</dependency>-->
+
     </dependencies>
     <dependencyManagement>
         <dependencies>

@@ -1,6 +1,7 @@
 package cn.ppfix.controller;
 
 import cn.ppfix.utils.JsonUtil;
+import cn.zjcscut.dao.common.RequestUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,4 +19,11 @@ public class XssController {
         System.out.println(JsonUtil.toJson(request.getParameterMap()));
         return "success";
     }
+
+	@RequestMapping(value = "/test/params.html")
+	public String testParams(HttpServletRequest request) {
+		System.out.println(RequestUtil.params(request,"user"));
+		return "success";
+	}
+
 }
