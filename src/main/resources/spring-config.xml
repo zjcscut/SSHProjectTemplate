@@ -129,4 +129,7 @@
         <property name="cacheManager" ref="ehcacheManagerFactory"/>
     </bean>
 
+    <!--添加activiti配置文件-->
+    <import resource="spring-activiti.xml" />
+
 </beans>

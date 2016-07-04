@@ -13,6 +13,7 @@
         <spring.version>4.2.4.RELEASE</spring.version>
         <mysql.version>5.1.35</mysql.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
+        <activiti.version>5.21.0</activiti.version>
     </properties>
     <dependencies>
         <!--servlet-->
@@ -135,6 +136,12 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.7</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>1.7.16</version>
+        </dependency>
         <!--hibernate-ehcache-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -149,7 +156,7 @@
             <version>1.2</version>
         </dependency>
 
-
+        <!--common lang3-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -163,12 +170,22 @@
             <version>4.1</version>
         </dependency>
 
-        <!--&lt;!&ndash;Spring&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework</groupId>-->
-            <!--<artifactId>spring-core</artifactId>-->
-            <!--<version>4.3.0.RELEASE</version>-->
-        <!--</dependency>-->
+        <!--activiti依赖-->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-bpmn-layout</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
 
     </dependencies>
     <dependencyManagement>
