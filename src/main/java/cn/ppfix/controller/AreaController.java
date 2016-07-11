@@ -49,19 +49,19 @@ public class AreaController {
 
 	@RequestMapping(value = "test/json.html")
 	@ResponseBody
-	@JsonResponse(ignoreNull = false, includeFilter = {"id", "name"}, exculdeFilter = {"districts"})
+//	@JsonResponse(ignoreNull = false, includeFilter = {"id", "name"}, exculdeFilter = {"districts"})
 	public Object testJsonAdaptor() {
 		Area area = new Area();
-//		area.setId(1);
-//		area.setName("上海");
-//		area.setPid(11111);
+		area.setId(1);
+		area.setName("上海");
+		area.setPid(11111);
 //		districts.add(new District("广州"));
 		List<Area> list = new ArrayList<>();
-//		Area area1 = new Area();
-//		area1.setId(12);
-//		area1.setName("北京");
-//		list.add(area);
-//		list.add(area1);
+		Area area1 = new Area();
+		area1.setId(12);
+		area1.setName("北京");
+		list.add(area);
+		list.add(area1);
 		return list;
 	}
 
