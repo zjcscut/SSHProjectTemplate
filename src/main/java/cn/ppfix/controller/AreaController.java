@@ -13,17 +13,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author zjc
  * @version 2016/5/16 22:10
  */
 @Controller
-@JsonResponse(ignoreNull = false, includeFilter = {"id", "name"}, exculdeFilter = {"districts"})
+//@JsonResponse(ignoreNull = false, includeFilter = {"id", "name"}, exculdeFilter = {"districts"})
 public class AreaController {
 
     @Autowired
@@ -66,6 +63,48 @@ public class AreaController {
 //		list.add(area);
 //		list.add(area1);
 		return list;
+	}
+
+	@RequestMapping(value = "hello.html",method = RequestMethod.POST)
+	@ResponseBody
+	public Object hello(@RequestParam(value = "id")Integer id,
+						 @RequestParam(value = "name")String name){
+		System.out.println("GET-method params -->" + " id:" + id + " name:" + name);
+		Area area = new Area();
+		area.setName("广州");
+		area.setId(1);
+		area.setPid(2);
+		Area area1 = new Area();
+		area1.setId(12);
+		area1.setName("北京");
+		area1.setPid(22);
+		Map<String,Object> map = new HashMap<>();
+		List<Area> list = new ArrayList<>();
+		list.add(area);
+		list.add(area1);
+		map.put("result",list);
+		return map;
+	}
+
+	@RequestMapping(value = "hello2.html",method = RequestMethod.GET)
+	@ResponseBody
+	public Object hello2(@RequestParam(value = "id")Integer id,
+						 @RequestParam(value = "name")String name){
+		System.out.println("GET-method params -->" + " id:" + id + " name:" + name);
+		Area area = new Area();
+		area.setName("广州");
+		area.setId(1);
+		area.setPid(2);
+		Area area1 = new Area();
+		area1.setId(12);
+		area1.setName("北京");
+		area1.setPid(22);
+		Map<String,Object> map = new HashMap<>();
+		List<Area> list = new ArrayList<>();
+		list.add(area);
+		list.add(area1);
+		map.put("result",list);
+		return map;
 	}
 
 }
