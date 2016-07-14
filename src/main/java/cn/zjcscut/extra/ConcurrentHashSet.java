@@ -6,12 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author zhangjinci
  * @version 2016/7/12 14:09
- */
-
-/**
- * ConcurrentHashSet的实现
- *
- * @param <E>
+ * @function ConcurrentHashSet的实现,来源于Jetty的源码
  */
 public class ConcurrentHashSet<E> extends AbstractSet<E> implements Set<E> {
 

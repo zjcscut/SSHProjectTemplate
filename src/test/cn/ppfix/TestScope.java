@@ -104,4 +104,9 @@ public class TestScope extends BasicTest {
         List<Area> list = areaService.selectBySqlContext(params,filter);
 		System.out.println("list--> " + JsonUtil.toJson(list));
 	}
+
+	@Test
+	public void Test10(){
+		System.out.println("java version --- >" + System.getProperty("java.version"));
+	}
 }

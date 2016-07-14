@@ -7,27 +7,27 @@ package cn.framework.common;
  */
 public class ScriptContext {
 
-	private String id;
-	private String md5;
+    private String id;    //id
+    private String sign;  //签名
 
-	public ScriptContext(String id, String md5) {
-		this.id = id;
-		this.md5 = md5;
-	}
+    public ScriptContext(String id, String sign) {
+        this.id = id;
+        this.sign = sign;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getMd5() {
-		return md5;
-	}
+    public String getSign() {
+        return sign;
+    }
 
-	public void setMd5(String md5) {
-		this.md5 = md5;
-	}
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
 }

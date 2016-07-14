@@ -22,7 +22,7 @@ public class ConfigUtils{
 		this.savePath = savePath;
 	}
 
-	//加载配置文件转化为字符串
+	//加载json配置文件转化为字符串
 	public String loadConfigFileToString() throws Exception{
         return null;
 	}
