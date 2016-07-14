@@ -35,7 +35,7 @@ public class DynamicCompileTest {
         out.flush();
         out.close();
 
-        Writer errOut = new FileWriter("D:\\compile\\out\\err.txt");  //设置编译错误信息输出文件
+//        Writer errOut = new FileWriter("D:\\compile\\out\\err.txt");  //设置编译错误信息输出文件
 
         // 开始编译
         JavaCompiler javaCompiler = ToolProvider.getSystemJavaCompiler();
@@ -43,7 +43,7 @@ public class DynamicCompileTest {
         JavaFileObject fileObject = new JavaStringObject("Hello", writer.toString());   //这里第二个参数其实可以直接写入字符串
 
 
-        CompilationTask task = javaCompiler.getTask(errOut, null, null,
+        CompilationTask task = javaCompiler.getTask(null, null, null,
                 Arrays.asList("-d", "./lib"), null, Arrays.asList(fileObject));  //-d对应后面的"./lib"为输出目录, 最后一个参数Arrays.asList(fileObject)为文件内容
         boolean success = task.call();
         if (!success) {
@@ -56,13 +56,13 @@ public class DynamicCompileTest {
             //Class class1=ClassLoader.getSystemClassLoader().loadClass("com.flyoung.hello.Hello");
 
             //利用URLClassLoader去实例化一个Class类  类文件可以放在任意位置，这样就很方便了
-//            URL[] urls = new URL[]{new URL("file://" + System.getProperty("user.dir") + "/lib/")};  //url必须给定protocol
-//            System.out.println("----> " + urls[0].toString());
-//            URLClassLoader classLoader = new URLClassLoader(urls);
-//            Class class1 = classLoader.loadClass("com.flyoung.hello.Hello");
-//            Method method = class1.getDeclaredMethod("main", String[].class);
-//            String[] args1 = {null};
-//            method.invoke(class1.newInstance(), args1);
+            URL[] urls = new URL[]{new URL("file://" + System.getProperty("user.dir") + "/lib/")};  //url必须给定protocol
+            System.out.println("----> " + urls[0].toString());
+            URLClassLoader classLoader = new URLClassLoader(urls);
+            Class class1 = classLoader.loadClass("com.flyoung.hello.Hello");
+            Method method = class1.getDeclaredMethod("main", String[].class);
+            String[] args1 = {null};
+            method.invoke(class1.newInstance(), args1);
         }
     }
 }
