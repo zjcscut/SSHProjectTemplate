@@ -1,13 +1,13 @@
-package cn.framework.ruby;
+package cn.framework.ognl;
 
 import cn.framework.common.AbstractScriptEngine;
 
 /**
  * @author zhangjinci
- * @version 2016/7/14 10:38
- * @function Ruby脚本引擎(目前尚未支持)
+ * @version 2016/7/15 12:09
+ * @function
  */
-public class RubyEngine extends AbstractScriptEngine{
+public class OgnlEngine  extends AbstractScriptEngine{
 
     @Override
     protected String getScriptName() {

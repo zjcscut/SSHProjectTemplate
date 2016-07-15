@@ -1,5 +1,7 @@
 package cn.framework.common;
 
+import cn.framework.entity.ExecuteResult;
+
 /**
  * @author zjc
  * @version 2016/7/13 23:59

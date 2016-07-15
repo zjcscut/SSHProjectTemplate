@@ -1,5 +1,7 @@
 package cn.framework.common;
 
+import cn.framework.entity.ExecuteResult;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -9,7 +11,7 @@ import java.util.function.Consumer;
  * @version 2016/7/14 9:42
  * @function 监听器支持引擎
  */
-public abstract class ListenerSupportEngine implements DynamicScriptEngine {
+public abstract class ListenerSupportEngine implements DynamicScriptEngine{
 
 
     protected List<ScriptListener> listeners = new LinkedList<>();

@@ -1,11 +1,7 @@
 package cn.framework.js;
 
 import cn.framework.common.AbstractScriptEngine;
-import cn.framework.common.ExecuteResult;
-import cn.framework.common.ScriptContext;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.Map;
 
 /**
  * @author zhangjinci

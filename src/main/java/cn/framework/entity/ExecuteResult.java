@@ -1,4 +1,4 @@
-package cn.framework.common;
+package cn.framework.entity;
 
 /**
  * @author zjc
@@ -6,4 +6,6 @@ package cn.framework.common;
  * @function 脚本提交回调结果
  */
 public class ExecuteResult {
+
+
 }
