@@ -1,7 +1,8 @@
 package cn.zjcscut.freemarker.config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author zjc
@@ -10,7 +11,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class ConfigUtils{
 
-	private final static Logger log = LogManager.getLogger(ConfigUtils.class);
+	private final static Logger log = LoggerFactory.getLogger(ConfigUtils.class);
 
 	public String savePath = System.getProperty("user.dir"); //获取当前工作目录
 

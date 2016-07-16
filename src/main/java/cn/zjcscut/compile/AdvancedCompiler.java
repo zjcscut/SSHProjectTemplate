@@ -27,13 +27,13 @@ public class AdvancedCompiler {
         StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, Locale.getDefault(), Charset.forName("UTF-8"));
         JavaFileObject file = constructTestor();
         Iterable<? extends JavaFileObject> files = Arrays.asList(file);
-        File filepath = new File("D:/compile/out/err.txt");
-        if (!filepath.exists()) {
-            filepath.getParentFile().mkdirs();
-        }
-        Writer out = new FileWriter(filepath);  //控制台错误信息输出目录
+//        File filepath = new File("D:/compile/out/err.txt");
+//        if (!filepath.exists()) {
+//            filepath.getParentFile().mkdirs();
+//        }
+//        Writer out = new FileWriter(filepath);  //控制台错误信息输出目录
         JavaCompiler.CompilationTask task = compiler.getTask(
-                out, fileManager, null, null, null, files
+                null, fileManager, null, null, null, files
         );
         Boolean result = task.call();
         if (result) {

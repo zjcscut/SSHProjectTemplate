@@ -1,8 +1,9 @@
 package cn.framework.common;
 
 import cn.framework.entity.ExecuteResult;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import javax.script.ScriptEngineFactory;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 public abstract class AbstractScriptEngine extends ListenerSupportEngine {
 
-    protected static final Logger log = LogManager.getLogger(AbstractScriptEngine.class);
+    protected static final Logger log = LoggerFactory.getLogger(AbstractScriptEngine.class);
 
     protected abstract String getScriptName();
 

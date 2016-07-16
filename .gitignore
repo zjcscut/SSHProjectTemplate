@@ -12,4 +12,6 @@ lib/
 #jrebel的配置文件
 rebel.xml
 
+bin/
+
 

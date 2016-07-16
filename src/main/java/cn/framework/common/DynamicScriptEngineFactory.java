@@ -8,8 +8,8 @@ import cn.framework.python.PythonEngine;
 import cn.framework.ruby.RubyEngine;
 import cn.framework.scala.ScalaEngine;
 import cn.framework.spel.SpringELEngine;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class DynamicScriptEngineFactory {
 
-    private final static Logger log = LogManager.getLogger(DynamicScriptEngineFactory.class);
+    private final static Logger log = LoggerFactory.getLogger(DynamicScriptEngineFactory.class);
 
     private final static Map<String, DynamicScriptEngine> engines = new HashMap<>();
 

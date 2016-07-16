@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ import java.util.Map;
  */
 public class JsonUtil {
 
-	private static final Logger log = LogManager.getLogger(JsonUtil.class);
+	private static final Logger log = LoggerFactory.getLogger(JsonUtil.class);
 	/**
 	 * 特性: (1)格式化日期:yyyy-MM-dd HH:mm:ss
 	 * (2)把map里面的空值输出为null

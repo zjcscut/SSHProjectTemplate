@@ -26,10 +26,12 @@ public class DynamicCompileTest {
         // 将代码写入内存中
         StringWriter writer = new StringWriter();// 内存字符串输出流
         PrintWriter out = new PrintWriter(writer);
-        out.println("package com.flyoung.hello;");
+        out.println("package com.flyoung.hello;\n");
+		out.print("import java.text.SimpleDateFormat;\n");
+		out.print("import java.util.Date;\n");
         out.println("public class Hello{");
         out.println("public static void main(String[] args){");
-        out.println("System.out.println(\"helloworld!\");");
+        out.println("System.out.println(\"Hello World! Today is \" + new SimpleDateFormat(\"yyyy-MM-dd\").format(new Date()));");
         out.println("}");
         out.println("}");
         out.flush();
@@ -62,7 +64,23 @@ public class DynamicCompileTest {
             Class class1 = classLoader.loadClass("com.flyoung.hello.Hello");
             Method method = class1.getDeclaredMethod("main", String[].class);
             String[] args1 = {null};
+
+            ByteArrayOutputStream bao = new ByteArrayOutputStream(1024);
+            PrintStream cacheStream = new PrintStream(bao);
+//			PrintStream oldStream = System.out;
+
+
+
             method.invoke(class1.newInstance(), args1);
-        }
+			System.setOut(cacheStream);
+			String message = cacheStream.toString();
+
+			message = "----------------" + message + "------------";
+//			System.setOut(oldStream);
+			System.out.println(message);
+			bao.close();
+			cacheStream.close();
+//			oldStream.close();
+		}
     }
 }

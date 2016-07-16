@@ -16,7 +16,7 @@ public abstract class ListenerSupportEngine implements DynamicScriptEngine{
 
     protected List<ScriptListener> listeners = new LinkedList<>();
 
-    protected void handleListenerBefore(ScriptContext scriptContext) {
+    protected void handleListenerBefore(final ScriptContext scriptContext) {
         listeners.forEach(new Consumer<ScriptListener>() {
             @Override
             public void accept(ScriptListener scriptListener) {
@@ -25,7 +25,7 @@ public abstract class ListenerSupportEngine implements DynamicScriptEngine{
         });
     }
 
-    protected void handleListenerAfter(ScriptContext scriptContext, ExecuteResult executeResult) {
+    protected void handleListenerAfter(final ScriptContext scriptContext,final ExecuteResult executeResult) {
         listeners.forEach(new Consumer<ScriptListener>() {
             @Override
             public void accept(ScriptListener scriptListener) {
