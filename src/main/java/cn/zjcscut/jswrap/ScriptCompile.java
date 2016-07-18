@@ -47,7 +47,7 @@ public class ScriptCompile {
             Map<String, Object> map = new HashMap<>();
             map.put("name", "zjc");
             map.put("date", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-            sc.run("print('Hello ' + name + ' today is ' + date)", map);
+            sc.run("var s = 'zjc';\nprint(s);", null);
         } catch (ScriptException e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@ import aj.org.objectweb.asm.ClassWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 
-import static jdk.internal.org.objectweb.asm.Opcodes.*;
+import org.objectweb.asm.Opcodes;
 
 /**
  * @author zhangjinci
@@ -13,6 +13,14 @@ import static jdk.internal.org.objectweb.asm.Opcodes.*;
  */
 public class CreateClass extends ClassLoader {
     private final static String outputPath = "D:\\Develop\\Projects\\SSHProjectTemplate\\target\\classes\\cn\\zjcscut\\asm\\test\\result\\";
+
+
+    private static final int V1_5 = Opcodes.V1_5;
+    private static final int ACC_PUBLIC = Opcodes.ACC_PUBLIC;
+    private static final int ACC_ABSTRACT = Opcodes.ACC_ABSTRACT;
+    private static final int ACC_INTERFACE= Opcodes.ACC_INTERFACE;
+    private static final int ACC_FINAL = Opcodes.ACC_FINAL;
+    private static final int ACC_STATIC = Opcodes.ACC_STATIC;
 
     private String realPath = this.getClass().getResource("").getPath();
 
@@ -38,7 +46,6 @@ public class CreateClass extends ClassLoader {
         out.close();
 
         CreateClass createClass = new CreateClass();
-
         //这个类名必须写全类名
         Class<?> clazz = createClass.defineClass("cn.zjcscut.asm.test.result.Comparable", b, 0, b.length);
         String s = clazz.getName();

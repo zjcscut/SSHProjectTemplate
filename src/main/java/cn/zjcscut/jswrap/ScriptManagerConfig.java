@@ -15,7 +15,8 @@ public class ScriptManagerConfig {
     //适配Jdk版本返回适当的引擎
     public ScriptEngine getEngine() throws ScriptException{
         String engineName = "JavaScript"; //jdk 1.8以下(其实可以通用"JavaScript")
-        String version =  show();
+        String version =  System.getProperty("java.version");
+        System.out.println(version + "--------------------------------");
         if (version.startsWith("1.8")){
             engineName = "Nashorn";  //jdk 1.8
         }

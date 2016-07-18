@@ -10,11 +10,12 @@
 <%@ taglib prefix="z" uri="https://github/zjcscut/taglib" %>
 <html>
 <head>
-    <title>地址多个</title>
+    <title>Scala SpringMVC</title>
 </head>
 <body>
-<h1>四舍五入</h1>
-<h3><z:roundHalfUp value="6.4455" leaveBits="2"/></h3>
+<h2>Hello Scala & SpringMVC</h2>
+<%--<h1>四舍五入</h1>--%>
+<%--<h3><z:roundHalfUp value="6.4455" leaveBits="2"/></h3>--%>
 
 </body>
 </html>

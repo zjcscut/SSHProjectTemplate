@@ -2,15 +2,15 @@ package cn.zjcscut.asm.test.adapter;
 
 import aj.org.objectweb.asm.ClassVisitor;
 import aj.org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
-import static jdk.internal.org.objectweb.asm.Opcodes.ASM4;
 
 /**
  * @author zhangjinci
  * @version 2016/7/5 19:46
  */
 public class RemoveMethodAdapter extends ClassVisitor{
-
+    public static final int ASM_API_VERSION = Opcodes.ASM4;
     private String mName;
     private String mDesc;
 
@@ -31,7 +31,7 @@ public class RemoveMethodAdapter extends ClassVisitor{
     }
 
     public RemoveMethodAdapter(ClassVisitor classVisitor) {
-        super(ASM4, classVisitor);
+        super(ASM_API_VERSION, classVisitor);
     }
 
     //access为修饰符的int类型,name为方法名,desc为方法签名,signature为泛型信息

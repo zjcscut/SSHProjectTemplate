@@ -1,7 +1,10 @@
 package cn.framework.js;
 
 import cn.framework.common.AbstractScriptEngine;
+import cn.ppfix.utils.MD5;
 import org.apache.commons.lang3.StringUtils;
+
+import javax.script.CompiledScript;
 
 /**
  * @author zhangjinci
@@ -16,21 +19,24 @@ public class JavaScriptEngine extends AbstractScriptEngine {
         String version = System.getProperty("java.version");
         if (StringUtils.isEmpty(version)) {
             throw new RuntimeException("获取Jdk版本失败");
-        } else if (version.startsWith("1.8")) {
+        } else if (version.startsWith("1.8")) {  //适配jdk1.8，解析JS的引擎改变了
             return "Nashorn";
         }
         return "JavaScript";
     }
 
     @Override
-    public boolean compile(String id, String sourceCode) {
+    public boolean compile(String id, String sourceCode) throws Exception {
         if (log.isDebugEnabled()) {
-            log.debug("complie {} {}:{}", getScriptName(), id, sourceCode);
+            log.debug("compile by ScriptEngine {}", getScriptName());//把编译内容记录进日志
+            log.debug("target : {}",id);
+            log.debug("script content : \n" + sourceCode);
         }
-        //获取编译器
-
-        //从工厂获取引擎
-
+        if (compilable == null)
+            init();
+        CompiledScript compiledScript = compilable.compile(sourceCode);
+        AbstractScriptContext scriptContext = new AbstractScriptContext(id, MD5.getMD5(sourceCode), compiledScript);
+        scripts.put(id, scriptContext);
         return true;
     }
 }

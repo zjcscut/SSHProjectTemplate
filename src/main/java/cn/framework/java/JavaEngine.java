@@ -38,11 +38,6 @@ public class JavaEngine  extends AbstractScriptEngine{
     }
 
     @Override
-    public boolean compiled(String id) {
-        return false;
-    }
-
-    @Override
     public ExecuteResult execute(String id, Map<String, Object> params) {
         return null;
     }

@@ -20,9 +20,7 @@ DynamicScriptEngine {
 
     ScriptContext getScriptContext(String id);
 
-    boolean compile(String id,String sourceCode);
-
-    boolean compiled(String id);
+    boolean compile(String id,String sourceCode)throws Exception;
 
     ExecuteResult execute(String id, Map<String,Object> params);
 

@@ -67,7 +67,7 @@ public class DynamicCompileTest {
 
             ByteArrayOutputStream bao = new ByteArrayOutputStream(1024);
             PrintStream cacheStream = new PrintStream(bao);
-//			PrintStream oldStream = System.out;
+			PrintStream oldStream = System.out;
 
 
 
@@ -76,11 +76,11 @@ public class DynamicCompileTest {
 			String message = cacheStream.toString();
 
 			message = "----------------" + message + "------------";
-//			System.setOut(oldStream);
+			System.setOut(oldStream);
 			System.out.println(message);
 			bao.close();
 			cacheStream.close();
-//			oldStream.close();
+			oldStream.close();
 		}
     }
 }
