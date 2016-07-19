@@ -19,12 +19,12 @@ class HelloWorldController {
 
   @RequestMapping(value = Array("scala/index.html"), method = Array(RequestMethod.GET))
   def Index(mav: ModelAndView, @RequestParam("id") id: String, @RequestParam("name") name: String): ModelAndView = {
-    print("id =" + id + " name=" + name)
+    print("接收到的请求参数--> " + "id =" + id + " name=" + name)
     mav.setViewName("index")
     mav
   }
 
-  @RequestMapping(value = Array("scala/index.html"), method = Array(RequestMethod.GET))
+  @RequestMapping(value = Array("scala/index/view.html"), method = Array(RequestMethod.GET))
   def PaeseParams(mav: ModelAndView): ModelAndView = {
     mav.setViewName("index")
     mav

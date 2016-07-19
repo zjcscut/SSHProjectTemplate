@@ -7,11 +7,15 @@ target/
 *.iws
 .idea/
 logs/
+.log
 lib/
 *.class
 #jrebel的配置文件
 rebel.xml
 
 bin/
+
+zip/
+
 
 
