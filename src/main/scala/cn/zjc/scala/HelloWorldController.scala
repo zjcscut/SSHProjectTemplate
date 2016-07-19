@@ -18,7 +18,8 @@ class HelloWorldController {
   }
 
   @RequestMapping(value = Array("scala/index.html"), method = Array(RequestMethod.GET))
-  def Index(mav: ModelAndView): ModelAndView = {
+  def Index(mav: ModelAndView, @RequestParam("id") id: String, @RequestParam("name") name: String): ModelAndView = {
+    print("id =" + id + " name=" + name)
     mav.setViewName("index")
     mav
   }
@@ -28,7 +29,6 @@ class HelloWorldController {
     mav.setViewName("index")
     mav
   }
-
 
 
 }
