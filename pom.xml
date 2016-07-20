@@ -36,14 +36,14 @@
 
         <!--Log4J2 start-->
         <!--<dependency>-->
-            <!--<groupId>org.apache.logging.log4j</groupId>-->
-            <!--<artifactId>log4j-api</artifactId>-->
-            <!--<version>2.5</version>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-api</artifactId>-->
+        <!--<version>2.5</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.apache.logging.log4j</groupId>-->
-            <!--<artifactId>log4j-core</artifactId>-->
-            <!--<version>2.5</version>-->
+        <!--<groupId>org.apache.logging.log4j</groupId>-->
+        <!--<artifactId>log4j-core</artifactId>-->
+        <!--<version>2.5</version>-->
         <!--</dependency>-->
         <!--Log4J2 end-->
 
@@ -61,6 +61,24 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+
+        <!--hibernate-validator start-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <!--hibernate-validator end-->
 
         <!--spring start-->
         <dependency>
@@ -137,15 +155,15 @@
         </dependency>
         <!--ehcache slf4j依赖-->
         <!--<dependency>-->
-            <!--<groupId>org.slf4j</groupId>-->
-            <!--<artifactId>slf4j-api</artifactId>-->
-            <!--<version>1.7.7</version>-->
+        <!--<groupId>org.slf4j</groupId>-->
+        <!--<artifactId>slf4j-api</artifactId>-->
+        <!--<version>1.7.7</version>-->
         <!--</dependency>-->
         <!--hibernate-ehcache-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
-            <version>5.1.0.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <!--JSTL 1.2-->
@@ -268,30 +286,30 @@
             <!--添加scala编译环境-->
             <!--这个可以正常使用，但是不能生成编译后的class文件，很奇怪-->
             <!--<plugin>-->
-                <!--<groupId>net.alchim31.maven</groupId>-->
-                <!--<artifactId>scala-maven-plugin</artifactId>-->
-                <!--<version>3.2.0</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>compile-scala</id>-->
-                        <!--<phase>compile</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>add-source</goal>-->
-                            <!--<goal>compile</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>test-compile-scala</id>-->
-                        <!--<phase>test-compile</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>add-source</goal>-->
-                            <!--<goal>testCompile</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-                <!--<configuration>-->
-                    <!--<scalaVersion>${scala.version}</scalaVersion>-->
-                <!--</configuration>-->
+            <!--<groupId>net.alchim31.maven</groupId>-->
+            <!--<artifactId>scala-maven-plugin</artifactId>-->
+            <!--<version>3.2.0</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>compile-scala</id>-->
+            <!--<phase>compile</phase>-->
+            <!--<goals>-->
+            <!--<goal>add-source</goal>-->
+            <!--<goal>compile</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--<execution>-->
+            <!--<id>test-compile-scala</id>-->
+            <!--<phase>test-compile</phase>-->
+            <!--<goals>-->
+            <!--<goal>add-source</goal>-->
+            <!--<goal>testCompile</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<scalaVersion>${scala.version}</scalaVersion>-->
+            <!--</configuration>-->
             <!--</plugin>-->
 
             <plugin>
