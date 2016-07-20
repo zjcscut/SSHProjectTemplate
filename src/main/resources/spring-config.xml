@@ -17,7 +17,7 @@
        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd">
 
     <!--扫描除了Controller之外的类-->
-    <context:component-scan base-package="cn.ppfix,cn.zjcscut,cn.zjc.scala">
+    <context:component-scan base-package="cn.ppfix,cn.zjcscut,cn.zjc.scala,cn.echartpro">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -102,6 +102,7 @@
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*" propagation="REQUIRED"/>
             <tx:method name="*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
@@ -109,7 +110,7 @@
 
     <aop:config>
         <aop:pointcut id="service"
-                      expression="execution(* cn.ppfix.service.*Service.*(..))"/>
+                      expression="execution(* *..service*..*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="service"/>
     </aop:config>
 

@@ -8,6 +8,7 @@
 
 package cn.ppfix;
 
+import cn.echartpro.service.EchartsService;
 import cn.ppfix.entity.Area;
 import cn.ppfix.service.AreaService;
 import cn.ppfix.service.CategoryService;
@@ -32,6 +33,9 @@ public class TestScope extends BasicTest {
 	private AreaService areaService;
 	@Autowired
 	private CategoryService categoryService;
+
+	@Autowired
+	private EchartsService echartsService;
 
 //	@Autowired
 //	private SqlDao sqlDao;
@@ -107,6 +111,6 @@ public class TestScope extends BasicTest {
 
 	@Test
 	public void Test10(){
-		System.out.println("java version --- >" + System.getProperty("java.version"));
+		System.out.println(echartsService.getData());
 	}
 }

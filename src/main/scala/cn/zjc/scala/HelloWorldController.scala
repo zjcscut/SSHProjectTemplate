@@ -30,5 +30,12 @@ class HelloWorldController {
     mav
   }
 
+  @RequestMapping(value = Array("scala/view/data.html"),method = Array(RequestMethod.GET))
+  def viewAndData(mav:ModelAndView):ModelAndView = {
+    mav.setViewName("index")
+    mav.addObject("name","zjcscut")
+    mav
+  }
+
 
 }
