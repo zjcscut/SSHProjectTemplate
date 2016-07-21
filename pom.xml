@@ -9,7 +9,7 @@
     <url>http://maven.apache.org</url>
     <properties>
         <druid.version>1.0.16</druid.version>
-        <jdk.version>1.7</jdk.version>
+        <jdk.version>1.8</jdk.version>
         <spring.version>4.2.4.RELEASE</spring.version>
         <mysql.version>5.1.35</mysql.version>
         <hibernate.version>5.1.0.Final</hibernate.version>

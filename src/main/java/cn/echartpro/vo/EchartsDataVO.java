@@ -9,32 +9,32 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class EchartsDataVO extends JSONObject {
 
-	private String name;
+    private String name;
 
-	private Integer num;
+    private Long num;
 
-	public EchartsDataVO() {
+    public EchartsDataVO() {
 
-	}
+    }
 
-	public EchartsDataVO(String name, Integer num) {
-		this.put("name", name);
-		this.put("value", num);
-	}
+    public EchartsDataVO(String name, Long num) {
+        this.put("name", name);
+        this.put("value", num);
+    }
 
-	public String getName() {
-		return this.getString("name");
-	}
+    public String getName() {
+        return this.getString("name");
+    }
 
-	public void setName(String name) {
-		this.put("name", name);
-	}
+    public void setName(String name) {
+        this.put("name", name);
+    }
 
-	public Integer getNum() {
-		return this.getInteger("value");
-	}
+    public Long getNum() {
+        return this.getLong("value");
+    }
 
-	public void setNum(Integer num) {
-		this.put("value", num);
-	}
+    public void setNum(Long num) {
+        this.put("value", num);
+    }
 }

@@ -24,7 +24,7 @@ public class EchartsDAO extends BaseDAO<OrderInfo> {
     }
 
     public List<EchartsDataResult> selectAll() {
-        Query query = getSession().createQuery("select a.name,count(o.id) from OrderInfo o,Area a where a.id = o.provinceId and o.isDelete = 0 group by a.name");
+        Query query = getSession().createQuery("select a.name as name,count(o.id) as num from OrderInfo o,Area a where a.id = o.provinceId and o.isDelete = 0 group by a.name order by count(o.id) desc ");
         query.setResultTransformer(Transformers.aliasToBean(EchartsDataResult.class));
         return query.list();
     }

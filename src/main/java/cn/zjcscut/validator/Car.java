@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 /**
  * @author zjc
  * @version 2016/7/20 23:19
- * @function
+ * @function Hibernate Validator的测试类
  */
 public class Car {
 

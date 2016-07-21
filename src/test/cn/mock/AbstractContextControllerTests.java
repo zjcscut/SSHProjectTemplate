@@ -54,4 +54,12 @@ public class AbstractContextControllerTests {
 				.andReturn();
 		System.out.println(result);
 	}
+
+	@Test
+	public void testEchatsData() throws Exception {
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/echart/data/get.html"))
+				.andDo(MockMvcResultHandlers.print())
+				.andReturn();
+		System.out.println(result);
+	}
 }

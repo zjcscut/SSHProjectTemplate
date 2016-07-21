@@ -41,7 +41,7 @@
 
     <!--拦截静态资源 location为本地路径,mapping为映射路径-->
     <!--<mvc:resources location="/res/" mapping="/res/**"/>-->
-    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/static/js/" mapping="/static/js/**"/>
 
     <!--自定义Xss拦截器-->
     <!--<mvc:interceptors>-->

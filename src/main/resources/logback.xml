@@ -51,7 +51,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover -->
-            <fileNamePattern>error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <fileNamePattern>${path}/error.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
 
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
@@ -101,7 +101,7 @@
 
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${path}/debug-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">

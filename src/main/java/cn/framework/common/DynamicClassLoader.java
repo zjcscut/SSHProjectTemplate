@@ -15,9 +15,4 @@ public class DynamicClassLoader extends URLClassLoader {
         super(urls, parent);
     }
 
-    //获取类加载器路径
-    @SuppressWarnings("ConstantConditions")
-    public String getClassPath(){
-        return this.getResource("").getPath();
-    }
 }

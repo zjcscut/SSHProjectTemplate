@@ -9,12 +9,12 @@ package cn.echartpro.vo;
 public class EchartsDataResult{
 
     private String name;
-    private Integer num;
+    private Long num;
 
     public EchartsDataResult() {
     }
 
-    public EchartsDataResult(String name, Integer num) {
+    public EchartsDataResult(String name, Long num) {
         this.name = name;
         this.num = num;
     }
@@ -27,11 +27,19 @@ public class EchartsDataResult{
         this.name = name;
     }
 
-    public Integer getNum() {
+    public Long getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Long num) {
         this.num = num;
+    }
+
+    @Override
+    public String toString() {
+        return "EchartsDataResult{" +
+                "name='" + name + '\'' +
+                ", num=" + num +
+                '}';
     }
 }
