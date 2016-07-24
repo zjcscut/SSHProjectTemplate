@@ -5,6 +5,7 @@ import scala.io.Source
 /**
   * @author zjc
   * @version 2016/7/21 1:15
+  * 懒加载
   */
 object LazyOps {
   def main(args: Array[String]): Unit = {

@@ -5,6 +5,7 @@ import cn.ppfix.entity.Area;
 import cn.ppfix.entity.District;
 import cn.ppfix.service.AreaService;
 import cn.ppfix.utils.JsonUtil;
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ import java.util.*;
  * @version 2016/5/16 22:10
  */
 @Controller
-//@JsonResponse(ignoreNull = false, includeFilter = {"id", "name"}, exculdeFilter = {"districts"})
+@JsonResponse(ignoreNull = false, includeFilter = {"id", "name"})
 public class AreaController {
 
     @Autowired
@@ -65,11 +66,9 @@ public class AreaController {
 		return list;
 	}
 
-	@RequestMapping(value = "hello.html",method = RequestMethod.POST)
+	@RequestMapping(value = "hello.html",method = RequestMethod.GET)
 	@ResponseBody
-	public Object hello(@RequestParam(value = "id")Integer id,
-						 @RequestParam(value = "name")String name){
-		System.out.println("GET-method params -->" + " id:" + id + " name:" + name);
+	public Object hello(){
 		Area area = new Area();
 		area.setName("广州");
 		area.setId(1);
@@ -83,6 +82,7 @@ public class AreaController {
 		list.add(area);
 		list.add(area1);
 		map.put("result",list);
+		System.out.println(JSON.toJSONString(map));
 		return map;
 	}
 
@@ -90,7 +90,6 @@ public class AreaController {
 	@ResponseBody
 	public Object hello2(@RequestParam(value = "id")Integer id,
 						 @RequestParam(value = "name")String name){
-		System.out.println("GET-method params -->" + " id:" + id + " name:" + name);
 		Area area = new Area();
 		area.setName("广州");
 		area.setId(1);

@@ -4,17 +4,18 @@ import cn.framework.common.DynamicScriptEngineFactory;
 import cn.framework.common.ScriptListener;
 import cn.framework.entity.ExecuteResult;
 import cn.framework.js.JavaScriptEngine;
+import cn.ppfix.entity.Area;
 import cn.ppfix.utils.JsonUtil;
 import cn.zjcscut.compile.cmd.DynamicCompileWithCmd;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -66,4 +67,26 @@ public class UnSpringTestScope {
        String  s = javaScriptEngine.getScriptContext("test1").getSign();
         System.out.println("result---- > " + s);
     }
+
+    @Test
+	public void TestJson(){
+    	String[] s = {"id","name"};
+		Area area = new Area();
+		area.setName("广州");
+		area.setId(1);
+		area.setPid(2);
+		Area area1 = new Area();
+		area1.setId(12);
+		area1.setName("北京");
+		area1.setPid(22);
+		Map<String,Object> map = new HashMap<>();
+		List<Area> list = new ArrayList<>();
+		list.add(area);
+		list.add(area1);
+		map.put("area",area);
+		map.put("area1",area1);
+		SimplePropertyPreFilter filter = new SimplePropertyPreFilter();
+		filter.getExcludes().add("pid");
+		System.out.println(JSON.toJSONString(map,filter));
+	}
 }

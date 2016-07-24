@@ -3,6 +3,7 @@ package cn.ppfix.common.annotation.impl;
 import cn.ppfix.common.annotation.JsonResponse;
 import cn.ppfix.utils.JsonUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializeFilter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.SimplePropertyPreFilter;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -68,6 +69,7 @@ public class JsonResponseHandler {
 			return null;
 		}
 		log.debug("进入Json注解处理器");
+		log.debug("当前方法返回值为--> " + obj);
 		Object target = pjp.getTarget();
 //		String method = pjp.getSignature().getName();
 		Class<?> clazz = target.getClass();
@@ -79,9 +81,11 @@ public class JsonResponseHandler {
 			//如果类中和方法中同时标注注解，方法中的注解覆盖类中的设置
 			JsonResponse jr = null;
 			if (isMethondAnnotation) {
+				log.debug("进入JsonResponse方法处理，忽略类上的注解");
 				jr = m.getAnnotation(JsonResponse.class);
 			} else if (isClzAnnotation) {
 				jr = clazz.getAnnotation(JsonResponse.class);
+				log.debug("进入JsonResponse类处理，没找到方法上的注解");
 			}else {
 				return obj;  //不存在注解
 			}
@@ -90,36 +94,49 @@ public class JsonResponseHandler {
 				boolean isIgnoreNull = jr.ignoreNull();
 				String[] includeFilter = jr.includeFilter();
 				String[] excludeFilter = jr.exculdeFilter();
-				SimplePropertyPreFilter sp = new SimplePropertyPreFilter();
+				SimplePropertyPreFilter includeProFilter  = null;
 				if (includeFilter.length > 0) {
-					for (String pro : includeFilter
-							) {
-						sp.getIncludes().add(pro);
-					}
+					includeProFilter = new SimplePropertyPreFilter(includeFilter);
 				}
+
+				SimplePropertyPreFilter excludeProFilter  = null;
 				if (excludeFilter.length > 0) {
+					excludeProFilter = new SimplePropertyPreFilter();
 					for (String pro : excludeFilter
 							) {
-						sp.getExcludes().add(pro);
+						excludeProFilter.getExcludes().add(pro);
 					}
 				}
 				log.debug("Json转换完毕，返回Json值");
-				if (includeFilter.length > 0 || excludeFilter.length > 0) {
+
+				if (includeFilter.length > 0 && excludeFilter.length > 0){
+					SerializeFilter[] filters = {includeProFilter,excludeProFilter};
 					if (isIgnoreNull) {
-						return JSON.toJSONString(obj, sp, Features);
+						return JSON.toJSONString(obj,filters, Features);
 					} else {
-						return JSON.toJSONString(obj, sp, WriteNullValueFeatures);
-					}
-				} else {
-					if (isIgnoreNull) {
-						return JSON.toJSONString(obj, Features);
-					} else {
-						return JSON.toJSONString(obj, WriteNullValueFeatures);
+						return JSON.toJSONString(obj, filters, WriteNullValueFeatures);
 					}
 				}
+
+				if (includeFilter.length > 0 && excludeFilter.length == 0){
+					if (isIgnoreNull) {
+						return JSON.toJSONString(obj,includeProFilter, Features);
+					} else {
+						return JSON.toJSONString(obj, includeProFilter, WriteNullValueFeatures);
+					}
+				}
+
+				if (includeFilter.length == 0 && excludeFilter.length > 0){
+					if (isIgnoreNull) {
+						return JSON.toJSONString(obj,excludeProFilter, Features);
+					} else {
+						return JSON.toJSONString(obj, excludeProFilter, WriteNullValueFeatures);
+					}
+				}
+
 			}
-			//不经过注解处理流程直接返回
-			return obj;
+			//不经过注解处理流程直接返回Json
+			return JSON.toJSONString(obj);
 		}
 		return obj;
 	}

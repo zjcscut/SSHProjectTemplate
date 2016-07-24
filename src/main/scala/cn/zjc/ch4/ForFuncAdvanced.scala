@@ -3,6 +3,7 @@ package cn.zjc.ch4
 /**
   * @author zjc
   * @version 2016/7/21 0:59
+  * for循环的高阶用法
   */
 object ForFuncAdvanced {
   def main(args: Array[String]): Unit = {
