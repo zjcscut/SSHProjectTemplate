@@ -11,13 +11,13 @@ import net.sf.cglib.proxy.Enhancer;
 //代理的工厂类
 public class ChineseProxyFactory {
 
-    public static Chinese getInstance() {
-        Enhancer enhancer = new Enhancer();
-        //设置要代理的目标类
-        enhancer.setSuperclass(Chinese.class);
-        //设置要代理的拦截器
-        enhancer.setCallback(new AroundAdvice());
-        return (Chinese) enhancer.create();
-    }
+	public static Chinese getInstance() {
+		Enhancer enhancer = new Enhancer();
+		//设置要代理的目标类
+		enhancer.setSuperclass(Chinese.class);
+		//设置要代理的拦截器
+		enhancer.setCallback(new AroundAdvice());
+		return (Chinese) enhancer.create();
+	}
 
 }
