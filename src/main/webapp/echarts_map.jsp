@@ -242,7 +242,6 @@
     });
 
 
-    //    http://localhost:8080/city/json.html
     // 异步加载数据
     $.getJSON('<%=request.getContextPath()%>/echart/data/get.html').done(function (data) {
         // 填入数据
@@ -255,17 +254,6 @@
         });
     });
 
-
-    //        {name: '福州', value: 95},
-    //        {name: '太原', value: 90},
-    //        {name: '长春', value: 80},
-    //        {name: '重庆', value: 70},
-    //        {name: '西安', value: 60},
-    //        {name: '成都', value: 50},
-    //        {name: '常州', value: 40},
-    //        {name: '北京', value: 30},
-    //        {name: '北海', value: 20},
-    //        {name: '海口', value: 10}
 </script>
 
 <script type="text/javascript">

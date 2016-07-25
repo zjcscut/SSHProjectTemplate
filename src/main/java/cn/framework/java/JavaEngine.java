@@ -12,7 +12,10 @@ import org.slf4j.LoggerFactory;
 
 import javax.script.ScriptException;
 import javax.tools.*;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.PrintStream;
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +40,7 @@ public class JavaEngine extends AbstractScriptEngine {
 
     private URL[] loaderUrl;
 
-    private static final String JAVA_SUBFFIX = ".java";
+    private static final String JAVA_SUBFFIX = ".java";  //源文件后缀
 
 
     public JavaEngine() throws Exception {
@@ -62,16 +65,17 @@ public class JavaEngine extends AbstractScriptEngine {
         return cache.get(id);
     }
 
+    //为了防止本地JVM中有同名的类，应该用sourceCode的内容作为签名，把前面添加到类名
     @Override
     public boolean compile(String id, String sourceCode) throws Exception {
         String name = ClassUtils.getClassNameFromSourceCode(sourceCode);
         String packageName = ClassUtils.getPachageNameFromSourceCode(sourceCode);
         if (StringUtils.isNotEmpty(packageName)) {
-            name += packageName + ".";
+            name = packageName + "." + name;
         }
         assert name != null;
         String fileName = savePath + name.replace(".", "/") + JAVA_SUBFFIX;
-        File file = new File(fileName);
+        File file = new File(fileName);  //创建源文件
         if (!file.getParentFile().exists()) {
             file.getParentFile().mkdirs();
         }
@@ -91,15 +95,15 @@ public class JavaEngine extends AbstractScriptEngine {
         options.add(classPath);
         if (log.isDebugEnabled()) {
             log.debug("javac [{}] -> {}", fileName, options.stream().reduce((s, s2) -> s + " " + s2).get());
-            log.debug(sourceCode);
+            log.debug("java Engine start compile\n" + sourceCode);
         }
         JavaCompiler.CompilationTask task = javaCompiler.getTask(null, fm, diagnosticCollector, options, null, jfiles);
         boolean success = task.call();  //执行编译
         if (success) {
-            DynamicClassLoader dynamicClassLoader = new DynamicClassLoader(loaderUrl, JavaEngine.class.getClassLoader());
+            DynamicClassLoader dynamicClassLoader = new DynamicClassLoader(loaderUrl);
             Class<?> clazz = dynamicClassLoader.loadClass(name);
-            JavaContext context = new JavaContext(id, MD5.getMD5(sourceCode), clazz);
-            cache.put(id, context);
+            JavaContext context = new JavaContext(id, MD5.getMD5(sourceCode), clazz);  //封装上下文
+            cache.put(id, context);  //写入缓存
             return clazz != null;
         } else {
             StringBuilder builder = new StringBuilder();
@@ -118,8 +122,27 @@ public class JavaEngine extends AbstractScriptEngine {
         try {
             if (context != null) {
                 handleListenerBefore(context);
-                Class clazz = context.getSourceClass();
-
+                Class<?> clazz = context.getSourceClass();
+                StringBuilder consoleStr = new StringBuilder();
+                StringBuilder returnStr = new StringBuilder();
+                //遍历clazz里面所有方法
+                if (clazz != null) {
+                    Object instance = clazz.newInstance();
+                    Method[] methods = clazz.getDeclaredMethods();
+                    for (int i = 0; i < methods.length; i++) {
+                        ByteArrayOutputStream bao = new ByteArrayOutputStream(1024);
+                        PrintStream cacheStream = new PrintStream(bao);
+                        System.setOut(cacheStream); //重定向标准输出流
+                        returnStr.append(methods[i].invoke(instance, (Object) null));  //尝试收集返回值
+                        String message = bao.toString();
+                        consoleStr.append(message);  //尝试收集控制台输出值
+                        bao.close();
+                        cacheStream.close();
+                    }
+                }
+                result.setSuccess(true);
+                result.setResult("Console:=> " + consoleStr.toString() + "\tReturn:=> " + returnStr.toString());
+                result.setMsg("java engine execute id =>:" + id + " successfully");
             } else {
                 result.setSuccess(false);
                 result.setResult(null);

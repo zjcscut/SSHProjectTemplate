@@ -17,9 +17,9 @@ public class EchartsDataVO extends JSONObject {
 
     }
 
-    public EchartsDataVO(String name, Long num) {
-        this.put("name", name);
+    public EchartsDataVO(Long num,String name) {
         this.put("value", num);
+        this.put("name", name);
     }
 
     public String getName() {
@@ -37,4 +37,6 @@ public class EchartsDataVO extends JSONObject {
     public void setNum(Long num) {
         this.put("value", num);
     }
+
+
 }

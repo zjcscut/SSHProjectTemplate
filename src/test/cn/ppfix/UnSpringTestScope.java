@@ -3,6 +3,7 @@ package cn.ppfix;
 import cn.framework.common.DynamicScriptEngineFactory;
 import cn.framework.common.ScriptListener;
 import cn.framework.entity.ExecuteResult;
+import cn.framework.java.JavaEngine;
 import cn.framework.js.JavaScriptEngine;
 import cn.ppfix.entity.Area;
 import cn.ppfix.utils.JsonUtil;
@@ -89,4 +90,37 @@ public class UnSpringTestScope {
 		filter.getExcludes().add("pid");
 		System.out.println(JSON.toJSONString(map,filter));
 	}
+
+	@Test
+    public void TestJavaEngine() throws Exception{
+        JavaEngine javaEngine = new JavaEngine();
+        String sourceCode = "package cn.zjc.compile;\n" +
+                "\n" +
+                "import java.text.SimpleDateFormat;\n" +
+                "import java.util.Date;\n" +
+                "\n" +
+                "public class Target {\n" +
+                "\n" +
+                "  public static void main(String[] args){\n" +
+                "      System.out.println(\"Hello World! Today is \" + new SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\").format(new Date()));\n" +
+                "  }\n" +
+                "}";
+        javaEngine.compile("test1",sourceCode);
+        System.out.println(javaEngine.execute("test1"));
+
+//        JavaEngine engine = new JavaEngine();
+//        String sourceCode2 = "package cn.zjcscut.compile;\n" +
+//                "\n" +
+//                "import java.text.SimpleDateFormat;\n" +
+//                "import java.util.Date;\n" +
+//                "\n" +
+//                "public class Target {\n" +
+//                "\n" +
+//                "  public static void main(String[] args){\n" +
+//                "      System.out.println(\"Hello World! Today not is\" + new SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\").format(new Date()));\n" +
+//                "  }\n" +
+//                "}";
+//        engine.compile("test12",sourceCode2);
+//        System.out.println(engine.execute("test12"));
+    }
 }

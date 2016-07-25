@@ -15,4 +15,8 @@ public class DynamicClassLoader extends URLClassLoader {
         super(urls, parent);
     }
 
+    public DynamicClassLoader(URL[] urls) {
+        super(urls);
+    }
+
 }

@@ -28,4 +28,5 @@ public class EchartsDAO extends BaseDAO<OrderInfo> {
         query.setResultTransformer(Transformers.aliasToBean(EchartsDataResult.class));
         return query.list();
     }
+
 }
