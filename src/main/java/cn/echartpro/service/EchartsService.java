@@ -25,10 +25,11 @@ public class EchartsService {
         List<JSONObject> jsonObjectList = new LinkedList<>();
         for (EchartsDataResult result : resultList) {
             EchartsDataVO vo = new EchartsDataVO();
-            vo.setName(result.getName());
             vo.setNum(result.getNum());
+            vo.setName(result.getName());
             jsonObjectList.add(vo);
         }
         return jsonObjectList;
     }
+
 }
