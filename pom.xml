@@ -144,7 +144,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.5</version>
+            <version>1.2.12</version>
         </dependency>
 
         <!--ehcache-->
@@ -153,13 +153,7 @@
             <artifactId>ehcache</artifactId>
             <version>2.10.1</version>
         </dependency>
-        <!--ehcache slf4j依赖-->
-        <!--<dependency>-->
-        <!--<groupId>org.slf4j</groupId>-->
-        <!--<artifactId>slf4j-api</artifactId>-->
-        <!--<version>1.7.7</version>-->
-        <!--</dependency>-->
-        <!--hibernate-ehcache-->
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
@@ -260,6 +254,55 @@
             <version>1.9.5</version>
         </dependency>
 
+        <!--jsoup 依赖-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.9.2</version>
+        </dependency>
+
+        <!--commons logging-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+
+        <!--shiro-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
+        <!--shiro web-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
+        <!--shiro-ehcache-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
+        <!--shiro-quartz-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-quartz</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
+        <!--shiro-spring-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -282,35 +325,6 @@
                     <target>${jdk.version}</target>
                 </configuration>
             </plugin>
-
-            <!--添加scala编译环境-->
-            <!--这个可以正常使用，但是不能生成编译后的class文件，很奇怪-->
-            <!--<plugin>-->
-            <!--<groupId>net.alchim31.maven</groupId>-->
-            <!--<artifactId>scala-maven-plugin</artifactId>-->
-            <!--<version>3.2.0</version>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<id>compile-scala</id>-->
-            <!--<phase>compile</phase>-->
-            <!--<goals>-->
-            <!--<goal>add-source</goal>-->
-            <!--<goal>compile</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--<execution>-->
-            <!--<id>test-compile-scala</id>-->
-            <!--<phase>test-compile</phase>-->
-            <!--<goals>-->
-            <!--<goal>add-source</goal>-->
-            <!--<goal>testCompile</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--<configuration>-->
-            <!--<scalaVersion>${scala.version}</scalaVersion>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
 
             <plugin>
                 <groupId>org.scala-tools</groupId>
@@ -347,9 +361,22 @@
                 </includes>
             </resource>
             <resource>
-                <directory>src/main/resources</directory>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.xml</include>
+                <include>**/*.fxml</include>
+                <!--工作流的文件-->
+                <include>**/*.bpmn</include>
+                <include>**/*.ftl</include>
+                <include>**/*.properties</include>
+            </includes>
+        </resource>
+
+            <resource>
+                <directory>src/test/resources</directory>
                 <includes>
                     <include>**/*.xml</include>
+                    <include>**/*.ini</include>
                     <include>**/*.fxml</include>
                     <!--工作流的文件-->
                     <include>**/*.bpmn</include>

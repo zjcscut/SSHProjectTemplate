@@ -4,6 +4,7 @@ import cn.framework.common.DynamicScriptEngineFactory;
 import cn.framework.common.ScriptListener;
 import cn.framework.entity.ExecuteResult;
 import cn.framework.js.JavaScriptEngine;
+import cn.ppfix.common.annotation.impl.CustomSimplePropertyPreFilter;
 import cn.ppfix.entity.Area;
 import cn.ppfix.utils.JsonUtil;
 import cn.zjcscut.compile.cmd.DynamicCompileWithCmd;
@@ -85,8 +86,10 @@ public class UnSpringTestScope {
 		list.add(area1);
 		map.put("area",area);
 		map.put("area1",area1);
-		SimplePropertyPreFilter filter = new SimplePropertyPreFilter();
-		filter.getExcludes().add("pid");
+		map.put("result",list);
+		CustomSimplePropertyPreFilter filter = new CustomSimplePropertyPreFilter();
+		filter.getExcludes().add("id");
+		filter.getExcludes().add("name");
 		System.out.println(JSON.toJSONString(map,filter));
 	}
 }

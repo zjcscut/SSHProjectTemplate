@@ -21,7 +21,7 @@ import java.util.*;
  * @version 2016/5/16 22:10
  */
 @Controller
-@JsonResponse(ignoreNull = false, includeFilter = {"id", "name"})
+@JsonResponse(ignoreNull = false, exculdeFilter = "id")
 public class AreaController {
 
     @Autowired
@@ -81,8 +81,9 @@ public class AreaController {
 		List<Area> list = new ArrayList<>();
 		list.add(area);
 		list.add(area1);
+		map.put("area",area);
 		map.put("result",list);
-		System.out.println(JSON.toJSONString(map));
+		System.out.println(JSON.toJSON(map));
 		return map;
 	}
 
@@ -102,6 +103,7 @@ public class AreaController {
 		List<Area> list = new ArrayList<>();
 		list.add(area);
 		list.add(area1);
+		map.put("area",area);
 		map.put("result",list);
 		return map;
 	}
