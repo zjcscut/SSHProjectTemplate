@@ -1,11 +1,9 @@
-package cn.ppfix;
+package cn.pp;
 
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricProcessInstance;
-import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
-import org.activiti.spring.ProcessEngineFactoryBean;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

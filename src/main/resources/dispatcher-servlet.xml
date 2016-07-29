@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
         ">
     <!-- 启动自动扫描@Controller -->
-    <context:component-scan base-package="cn.ppfix.controller,cn.zjcscut,cn.zjc.scala,cn.echartpro" use-default-filters="false">
+    <context:component-scan base-package="cn.pp.controller,cn.zjcscut,cn.zjc.scala,cn.echartpro" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

@@ -1,4 +1,4 @@
-package cn.ppfix;
+package cn.pp;
 
 import org.junit.Test;
 

@@ -1,7 +1,7 @@
 package cn.framework.js;
 
 import cn.framework.common.AbstractScriptEngine;
-import cn.ppfix.utils.MD5;
+import cn.pp.utils.MD5;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.script.CompiledScript;

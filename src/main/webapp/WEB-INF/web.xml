@@ -115,7 +115,7 @@
     <!--xss filter-->
     <filter>
         <filter-name>XssEscape</filter-name>
-        <filter-class>cn.ppfix.filter.XssFilter</filter-class>
+        <filter-class>cn.pp.filter.XssFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>XssEscape</filter-name>
@@ -130,5 +130,9 @@
             <taglib-location>WEB-INF/devTaglib.tld</taglib-location>
         </taglib>
     </jsp-config>
+    
+    <welcome-file-list>
+        <welcome-file>/tem.jsp</welcome-file>
+    </welcome-file-list>
 
 </web-app>

@@ -11,7 +11,7 @@
 
     <tag>
         <name>referer</name>
-        <tag-class>cn.ppfix.tag.RefererTag</tag-class>
+        <tag-class>cn.pp.tag.RefererTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>site</name>
@@ -27,7 +27,7 @@
 
     <tag>
         <name>roundHalfUp</name>
-        <tag-class>cn.ppfix.tag.RoundHalfUpTag</tag-class>
+        <tag-class>cn.pp.tag.RoundHalfUpTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>value</name>

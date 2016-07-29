@@ -1,6 +1,6 @@
 package cn.zjcscut.dao.common;
 
-import cn.ppfix.entity.Area;
+import cn.pp.entity.Area;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

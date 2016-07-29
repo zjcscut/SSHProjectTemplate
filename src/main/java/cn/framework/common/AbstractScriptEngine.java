@@ -1,7 +1,7 @@
 package cn.framework.common;
 
 import cn.framework.entity.ExecuteResult;
-import cn.ppfix.utils.MD5;
+import cn.pp.utils.MD5;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

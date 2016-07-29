@@ -17,7 +17,7 @@
        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd">
 
     <!--扫描除了Controller之外的类-->
-    <context:component-scan base-package="cn.ppfix,cn.zjcscut,cn.zjc.scala,cn.echartpro">
+    <context:component-scan base-package="cn.pp,cn.zjcscut,cn.zjc.scala,cn.echartpro">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -86,7 +86,7 @@
             </props>
         </property>
         <!--<property name="mappingLocations" value="classpath:/mappings/*hbm.xml"/>-->
-        <property name="mappingLocations" value="classpath:/cn/ppfix/entity/*.hbm.xml"/>
+        <property name="mappingLocations" value="classpath:/cn/pp/entity/*.hbm.xml"/>
 
     </bean>
 

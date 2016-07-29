@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cn.pp.entity.Area" table="area">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+
+        <property name="pid" type="java.lang.Integer">
+            <column name="pid"/>
+        </property>
+
+        <!--<set name="districts" cascade="all" lazy="false" inverse="true">-->
+            <!--<key column="area_id"/>-->
+            <!--<one-to-many class="cn.ppfix.entity.District"/>-->
+        <!--</set>-->
+        <!--<many-to-one name="parent" column="pid" fetch="join" lazy="false" not-found="ignore"/>-->
+        <!--<set name="nodes" cascade="all" lazy="false" fetch="join" inverse="true" >-->
+        <!--<key column="pid"/>-->
+        <!--<one-to-many class="cn.ppfix.entity.Area"/>-->
+        <!--</set>-->
+    </class>
+</hibernate-mapping>

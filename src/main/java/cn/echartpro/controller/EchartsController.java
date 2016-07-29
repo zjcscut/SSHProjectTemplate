@@ -1,7 +1,7 @@
 package cn.echartpro.controller;
 
 import cn.echartpro.service.EchartsService;
-import cn.ppfix.utils.JsonUtil;
+import cn.pp.utils.JsonUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

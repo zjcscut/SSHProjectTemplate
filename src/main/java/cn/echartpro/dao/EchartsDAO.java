@@ -1,8 +1,8 @@
 package cn.echartpro.dao;
 
 import cn.echartpro.vo.EchartsDataResult;
-import cn.ppfix.common.dao.BaseDAO;
-import cn.ppfix.entity.OrderInfo;
+import cn.pp.common.dao.BaseDAO;
+import cn.pp.entity.OrderInfo;
 import org.hibernate.Query;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;

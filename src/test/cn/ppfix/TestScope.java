@@ -6,13 +6,13 @@
  * Please do not del these words when you share or copy this file
  */
 
-package cn.ppfix;
+package cn.pp;
 
 import cn.echartpro.service.EchartsService;
-import cn.ppfix.entity.Area;
-import cn.ppfix.service.AreaService;
-import cn.ppfix.service.CategoryService;
-import cn.ppfix.utils.JsonUtil;
+import cn.pp.entity.Area;
+import cn.pp.service.AreaService;
+import cn.pp.service.CategoryService;
+import cn.pp.utils.JsonUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

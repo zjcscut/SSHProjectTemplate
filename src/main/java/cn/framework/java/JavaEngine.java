@@ -5,7 +5,7 @@ import cn.framework.entity.CharSequenceJavaFileObject;
 import cn.framework.entity.ExecuteResult;
 import cn.framework.util.ClassUtils;
 import cn.framework.util.FileUtils;
-import cn.ppfix.utils.MD5;
+import cn.pp.utils.MD5;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

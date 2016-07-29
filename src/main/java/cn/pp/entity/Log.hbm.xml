@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cn.pp.entity.Log" table="log">
+        <id name="key" type="java.lang.Integer">
+            <column name="key"/>
+            <generator class="identity"/>
+        </id>
+        <property name="id" type="java.lang.String">
+            <column name="id"/>
+        </property>
+
+    </class>
+</hibernate-mapping>
