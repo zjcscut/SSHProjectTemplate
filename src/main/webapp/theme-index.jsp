@@ -1,102 +1,286 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
-
 <%--
-  ~ Copyright (c) zjc@scut 2016~
-  ~ Free of All
-  ~ Help Yourselves!
-  ~ Any bug was found please contact me at 739805340scut@gmail.com
-  --%>
-
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2016/7/30
+  Time: 18:03
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
     <title>ZJC的博客</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ZJC的博客">
+    <link rel="shortcut icon" href="<%=request.getContextPath()%>/static/img/bitbug_favicon.ico" type="image/x-icon">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Docs -->
+    <link href="<%=request.getContextPath()%>/static/js/bootstrap/css/docs.min.css" rel="stylesheet" media="screen">
+    <%--Custom css--%>
+    <link href="<%=request.getContextPath()%>/static/js/custom/blog.css" rel="stylesheet" media="screen">
 
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="<%=request.getContextPath()%>/static/img/favicon.ico">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/theme/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/theme/css/bootstrap-theme.min.css">
+
+    <!-- Bootstrap Admin Theme -->
+    <link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/theme/css/bootstrap-admin-theme.css">
+    <link rel="stylesheet" media="screen"
+          href="<%=request.getContextPath()%>/theme/css/bootstrap-admin-theme-change-size.css">
+
 
     <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/jquery/jquery.min.js"></script>
-
     <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+            src="<%=request.getContextPath()%>/theme/js/twitter-bootstrap-hover-dropdown.min.js"></script>
 
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/js/bootstrap/css/bootstrap.min.css">
-    <%--主题css--%>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/theme/jumbotron.css">
+
+    <!-- Custom styles -->
+    <style type="text/css">
+        @font-face {
+            font-family: Ubuntu;
+            src: url('<%=request.getContextPath()%>/theme/fonts/Ubuntu-Regular.ttf');
+        }
+
+        .bs-docs-masthead {
+            background: #6f5499 linear-gradient(to bottom, #563d7c 0px, #6f5499 100%) repeat-x;
+        }
+
+        .bs-docs-masthead {
+            padding: 0;
+        }
+
+        .bs-docs-masthead h1 {
+            color: #fff;
+            font-size: 40px;
+            margin: 0;
+            padding: 34px 0;
+            text-align: center;
+        }
+
+        .bs-docs-masthead a:hover {
+            text-decoration: none;
+        }
+
+        .meritoo-logo a {
+            background-color: #fff;
+            border: 1px solid rgba(66, 139, 202, 0.4);
+            display: block;
+            font-family: Ubuntu;
+            padding: 22px 0;
+            text-align: center;
+        }
+
+        .meritoo-logo a,
+        .meritoo-logo a:hover,
+        .meritoo-logo a:focus {
+            text-decoration: none;
+        }
+
+        .meritoo-logo a img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .meritoo-logo a span {
+            color: #4e4b4b;
+            font-size: 18px;
+        }
+
+        .row-urls {
+            margin-top: 4px;
+        }
+
+        .row-urls .col-md-6 {
+            text-align: center;
+        }
+
+        .row-urls .col-md-6 a {
+            font-size: 14px;
+        }
+    </style>
+
 </head>
-<body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar">犀利</span>
-                <span class="icon-bar">ssss</span>
-                <span class="icon-bar">sssss</span>
-            </button>
-            <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right">
-                <div class="form-group">
-                    <input type="text" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-        </div>
-    </div>
-</nav>
-
-
-<div class="jumbotron">
-    <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-            jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-            unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-    </div>
-</div>
+<body class="bootstrap-admin-with-small-navbar">
+<%@ include file="pub/navbar.jsp" %>
 
 <div class="container">
-    <!-- Example row of columns -->
+    <!-- 左边的目录以及中部的主要内容 -->
     <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+        <!-- 左边的目录菜单 占3列 -->
+        <div class="col-md-3 bootstrap-admin-col-left">
+            <%--博主信息--%>
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="<%=request.getContextPath()%>/static/img/bitbug_favicon.ico"/>
+                    Author Info
+                </div>
+
+                <div class="user_image">
+                    <img src="<%=request.getContextPath()%>/static/img/love.jpeg">
+                </div>
+                <div class="nickName">Zjc</div>
+                <div class="userSign">Love Cartoon,Love Life,Love Technology</div>
+
+            </div>
+
+            <%--类型分类目录--%>
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="<%=request.getContextPath()%>/static/img/bitbug_favicon.ico"/>
+                    Categories
+                </div>
+                <div>
+                    <ul id="menu_items_ul" class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+
+                    </ul>
+                </div>
+            </div>
+
+            <%--日期分类目录--%>
+            <div class="data_list">
+                <div class="data_list_title">
+                    <img src="<%=request.getContextPath()%>/static/img/bitbug_favicon.ico"/>
+                    Categories By Date
+                </div>
+                <div>
+                    <ul id="menu_date_ul" class="nav navbar-collapse collapse bootstrap-admin-navbar-side">
+
+                    </ul>
+                </div>
+            </div>
+
         </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+        <%--博客博文内容，10列--%>
+        <div id="main_content" class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="text-muted bootstrap-admin-box-title"><a>Demo 1</a></div>
+                </div>
+                <div class="bootstrap-admin-panel-content">
+                    <p>zjc</p>
+                    <p>Copyright © 2016 - ZJCSCUT &lt;github [at] ZJCSCUT [dot] pl&gt;</p>
+                    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                    <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+                    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="text-muted bootstrap-admin-box-title">Demo 2</div>
+                </div>
+                <div class="bootstrap-admin-panel-content">
+                    <p>zjc</p>
+                    <p>Copyright © 2016 - ZJCSCUT &lt;github [at] ZJCSCUT [dot] pl&gt;</p>
+                    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                    <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+                    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="text-muted bootstrap-admin-box-title">Demo 2</div>
+                </div>
+                <div class="bootstrap-admin-panel-content">
+                    <p>zjc</p>
+                    <p>Copyright © 2016 - ZJCSCUT &lt;github [at] ZJCSCUT [dot] pl&gt;</p>
+                    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                    <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+                    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="text-muted bootstrap-admin-box-title">Demo 2</div>
+                </div>
+                <div class="bootstrap-admin-panel-content">
+                    <p>zjc</p>
+                    <p>Copyright © 2016 - ZJCSCUT &lt;github [at] ZJCSCUT [dot] pl&gt;</p>
+                    <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                    <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+                    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+                </div>
+            </div>
+
         </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
+
     </div>
-
-    <hr>
-
-    <footer>
-        <p>&copy; zjc@scut &nbsp;2016</p>
-    </footer>
 </div>
+
+<%--获取主菜单--%>
+
+<script type="text/javascript">
+
+    var loadMenuItems = function () {
+
+        $("#main_navbar_ul a").click(function () {
+            var s = $(this).attr("id");
+            alert(s);
+            $.ajax({
+                url: "<%=request.getContextPath()%>/menu/item/" + s,
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    debugger
+                    if (data != null) {
+                        $("#menu_items_ul").html("");
+                        $.each(data, function (i, value) {
+                            var ss = "<li><a id = '" + value.id + "'>" +
+                                    "<i class='glyphicon glyphicon-chevron-right'></i>"
+                                    + value.name +
+                                    "</a></li>";
+                            $("#menu_items_ul").append(ss);
+                        });
+                    }
+                },
+                error: function () {
+                    alert("出错了");
+                }
+            })
+        });
+    };
+
+    loadMenuItems();
+
+    // 控制字体大小
+    $(function () {
+        var sizeChangerContainer = '.bootstrap-admin-theme-change-size';
+
+        $('.size-changer', sizeChangerContainer).on('click', function () {
+            var setLargeSize = $(this).hasClass('large');
+
+            if (setLargeSize && $('link[href^="<%=request.getContextPath()%>/theme/css/bootstrap-admin-theme"]').length === 2) {
+                return false;
+            }
+
+            $(this).addClass('active');
+
+            if (setLargeSize) {
+                $('link[href="<%=request.getContextPath()%>/theme/css/bootstrap-admin-theme-small.css"]').remove();
+                $('link[href="<%=request.getContextPath()%>/theme/css/bootstrap-small.css"]').remove();
+
+                $('.small', sizeChangerContainer).removeClass('active');
+                return true;
+            }
+
+            $('head').append('<link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/theme/css/bootstrap-small.css"><link rel="stylesheet" media="screen" href="<%=request.getContextPath()%>/theme/css/bootstrap-admin-theme-small.css">');
+            $('.large', sizeChangerContainer).removeClass('active');
+        });
+    });
+
+
+</script>
+
+
+<%@include file="pub/footer.jsp" %>
+
 
 </body>
 </html>

@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ThemeController {
 
-    @RequestMapping(value = "/theme/index.html")
-    public String index(){
-        return "theme-index";
-    }
+	@RequestMapping(value = "/theme/index.html")
+	public String index() {
+		return "theme-index";
+	}
+
 }

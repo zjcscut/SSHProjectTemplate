@@ -28,10 +28,12 @@
 
     myChart.setOption({
         backgroundColor: '#1b1b1b',
-        color: ['gold', 'aqua', 'lime'],
+        color: ['rgba(37, 140, 249, 0.8)',
+            'rgba(14, 241, 242, 0.8)'
+        ],
         title: {
-            text: '模拟迁徙',
-            subtext: '数据纯属虚构',
+            text: '虚拟信用卡业务省份分布',
+            subtext: '数据暂时虚构',
             x: 'center',
             textStyle: {
                 color: '#fff'
@@ -44,13 +46,14 @@
         legend: {
             orient: 'vertical',
             x: 'left',
-            data: ['广州 Top10'],
+            data: ['进件城市分布', '实名认证城市分布'],
             selectedMode: 'single',
             selected: {
-                '广州 Top10': true
+                '进件城市分布': false,
+                '实名认证城市分布': false
             },
             textStyle: {
-                color: 'white'
+                color: '#fff'
             }
         },
         toolbox: {
@@ -67,7 +70,7 @@
         },
         dataRange: {
             min: 0,
-            max: 100,
+            max: 10000,
             calculable: true,
             color: ['#ff3333', 'orange', 'yellow', 'lime', 'aqua'],
             textStyle: {
@@ -89,7 +92,8 @@
                             color: '#1b1b1b'
                         },
                         lable: {
-                            show: true
+                            show: true,
+                            textStyle: {color: '#FFFFFF'}//字体颜色
                         }
                     },
                     emphasis: {label: {show: true}}
@@ -213,14 +217,14 @@
                 }
             },
             {
-                name: '广州 Top10',
+                name: '进件城市分布',
                 type: 'map',
                 mapType: 'china',
                 data: [],
                 markPoint: {
                     symbol: 'emptyCircle',
                     symbolSize: function (v) {
-                        return 10 + v / 10
+                        return 20 + v / 1000
                     },
                     effect: {
                         show: true,
@@ -228,31 +232,79 @@
                     },
                     itemStyle: {
                         normal: {
-                            label: {show: true}
+                            label: {show: false}
                         }
                         ,
                         emphasis: {
                             label: {position: 'top'}
                         }
                     },
-                    data: []
+                    data: [
+                        {name: '广州', value: 9500},
+                        {name: '上海', value: 9000},
+                        {name: '天津', value: 8000},
+                        {name: '长沙', value: 7000},
+                        {name: '葫芦岛', value: 6000},
+                        {name: '长春', value: 5000},
+                        {name: '常州', value: 4000},
+                        {name: '北京', value: 3000},
+                        {name: '秦皇岛', value: 2000},
+                        {name: '海口', value: 1000}]
+                }
+            },
+
+            {
+                name: '实名认证城市分布',
+                type: 'map',
+                mapType: 'china',
+                data: [],
+                markPoint: {
+                    symbol: 'emptyCircle',
+                    symbolSize: function (v) {
+                        return 20 + v / 1000
+                    },
+                    effect: {
+                        show: true,
+                        shadowBlur: 0
+                    },
+                    itemStyle: {
+                        normal: {
+                            label: {show: false}
+                        }
+                        ,
+                        emphasis: {
+                            label: {position: 'top'}
+                        }
+                    },
+                    data: [
+                        {name: '福州', value: 9500},
+                        {name: '太原', value: 9000},
+                        {name: '长春', value: 8000},
+                        {name: '重庆', value: 7000},
+                        {name: '西安', value: 6000},
+                        {name: '成都', value: 5000},
+                        {name: '常州', value: 4000},
+                        {name: '北京', value: 3000},
+                        {name: '北海', value: 2000},
+                        {name: '海口', value: 1000}
+                    ]
                 }
             }
         ]
     });
 
 
-    // 异步加载数据
-    $.getJSON('<%=request.getContextPath()%>/echart/data/get.html').done(function (data) {
-        // 填入数据
-        myChart.setOption({
-            series: [{}, {
-                markPoint: {
-                    data: data
-                }
-            }]
-        });
-    });
+    <%--// 异步加载数据--%>
+    <%--$.getJSON('<%=request.getContextPath()%>/echart/data/get.html').done(function (data) {--%>
+    <%--// 填入数据--%>
+    <%--myChart.setOption({--%>
+    <%--series: [{}, {--%>
+    <%--markPoint: {--%>
+    <%--data: data--%>
+    <%--}--%>
+    <%--}]--%>
+    <%--});--%>
+    <%--});--%>
 
 </script>
 

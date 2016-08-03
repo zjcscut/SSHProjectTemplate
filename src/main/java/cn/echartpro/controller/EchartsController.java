@@ -57,4 +57,9 @@ public class EchartsController {
         log.error(JsonUtil.toJson(result));
         return JsonUtil.toJson(result);
     }
+
+	@RequestMapping(value = "echart/dynamic/barchart.html")
+	public String getDynamicBarchart() {
+		return "dynamic_bar";
+	}
 }

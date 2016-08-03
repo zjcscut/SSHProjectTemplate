@@ -131,8 +131,8 @@
         </taglib>
     </jsp-config>
     
-    <welcome-file-list>
-        <welcome-file>/tem.jsp</welcome-file>
-    </welcome-file-list>
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>/WEB-INF/theme-index.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
 
 </web-app>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="cn.blog.entity.Menu" table="menu">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name"/>
+        </property>
+
+        <property name="pid" type="java.lang.Integer">
+            <column name="pid"/>
+        </property>
+
+        <property name="level" type="java.lang.Integer">
+            <column name="level"/>
+        </property>
+
+        <property name="isDelete" type="java.lang.Integer">
+            <column name="is_delete"/>
+        </property>
+    </class>
+</hibernate-mapping>
