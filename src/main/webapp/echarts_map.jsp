@@ -294,17 +294,17 @@
     });
 
 
-    <%--// 异步加载数据--%>
-    <%--$.getJSON('<%=request.getContextPath()%>/echart/data/get.html').done(function (data) {--%>
-    <%--// 填入数据--%>
-    <%--myChart.setOption({--%>
-    <%--series: [{}, {--%>
-    <%--markPoint: {--%>
-    <%--data: data--%>
-    <%--}--%>
-    <%--}]--%>
-    <%--});--%>
-    <%--});--%>
+    // 异步加载数据
+    $.getJSON('<%=request.getContextPath()%>/echart/data/get.html').done(function (data) {
+        // 填入数据
+        myChart.setOption({
+            series: [{}, {
+                markPoint: {
+                    data: data
+                }
+            }]
+        });
+    });
 
 </script>
 
