@@ -31,6 +31,11 @@ public class EchartsController {
         return "echarts_map";
     }
 
+    @RequestMapping(value = "echart/view/v2.html")
+    public String getEchartsViewV2() {
+        return "echarts_china";
+    }
+
     @RequestMapping(value = "echart/data/get.html", method = RequestMethod.GET)
     @ResponseBody
     public String getEchartsData() {
@@ -43,7 +48,7 @@ public class EchartsController {
         return "rosechart";
     }
 
-    @RequestMapping(value = "echart/rosechart/data.html",method = RequestMethod.GET)
+    @RequestMapping(value = "echart/rosechart/data.html", method = RequestMethod.GET)
     @ResponseBody
     public String getRosechartData() {
         JSONObject result = new JSONObject();
@@ -58,8 +63,27 @@ public class EchartsController {
         return JsonUtil.toJson(result);
     }
 
-	@RequestMapping(value = "echart/dynamic/barchart.html")
-	public String getDynamicBarchart() {
-		return "dynamic_bar";
-	}
+    @RequestMapping(value = "echart/dynamic/barchart.html")
+    public String getDynamicBarchart() {
+        return "dynamic_bar";
+    }
+
+
+    @RequestMapping(value = "echart/plugins/barchart.html")
+    public String getPluginsBarchart() {
+        return "echarts_plugins";
+    }
+
+
+    @RequestMapping(value = "echart/plugins/data.html")
+    @ResponseBody
+    public Object getPluginsData() {
+        JSONObject result = new JSONObject();
+        result.put("data", echartsService.selectRemoveCauses());
+        result.put("isOk", "OK");
+        result.put("success",true);
+        return result;
+    }
+
+
 }

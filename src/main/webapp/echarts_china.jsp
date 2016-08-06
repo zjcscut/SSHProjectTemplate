@@ -19,7 +19,7 @@
 <!--Step:1 Prepare a dom for ECharts which (must) has size (width & hight)-->
 <!--Step:1 为ECharts准备一个具备大小（宽高）的Dom-->
 
-<div id="mainMap" style="height:800px;border:1px solid #ccc;padding:10px; width: 1600px"></div>
+<div id="mainMap" style="width: 1920px;height: 1080px;border:1px solid #ccc;padding:10px"></div>
 
 <script type="text/javascript">
 
