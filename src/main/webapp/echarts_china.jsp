@@ -121,7 +121,8 @@
                         normal: {
                             label: {
                                 show: true,//显示地图标识的省份
-                                textStyle: {color: '#FFFFFF'}//字体颜色
+                                textStyle: {color: '#FFFFFF'},//字体颜色
+                                position: 'inside'
 
                             },
                             borderColor: 'rgba(100,149,237,1)',

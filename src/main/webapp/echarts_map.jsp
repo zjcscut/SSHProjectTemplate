@@ -49,7 +49,7 @@
             data: ['进件城市分布', '实名认证城市分布'],
             selectedMode: 'single',
             selected: {
-                '进件城市分布': false,
+                '进件城市分布': true,
                 '实名认证城市分布': false
             },
             textStyle: {

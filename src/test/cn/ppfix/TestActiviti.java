@@ -13,7 +13,7 @@ import java.util.List;
  * @author zhangjinci
  * @version 2016/7/4 18:14
  */
-public class TestActiviti extends BasicTest{
+public class TestActiviti extends cn.pp.BasicTest {
 
 //    @Autowired
 //    private ProcessEngineFactoryBean processEngine;

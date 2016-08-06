@@ -85,5 +85,8 @@ public class EchartsController {
         return result;
     }
 
-
+    @RequestMapping(value = "echart/chart/bar_line.html")
+    public String getBarLinechart() {
+        return "echarts_bar_line";
+    }
 }
