@@ -21,7 +21,13 @@ import java.util.*;
  */
 @Controller
 @JsonResponse(ignoreNull = false, exculdeFilter = "id")
+@RequestMapping("sys")
 public class AreaController {
+
+	@RequestMapping("/index")
+	public String hellos(){
+	    return "index";
+    }
 
     @Autowired
     private AreaService areaService;
