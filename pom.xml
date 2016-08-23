@@ -318,21 +318,9 @@
             <version>2.2.7</version>
         </dependency>
 
-        <!--activemq-->
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-            <version>5.13.4</version>
-        </dependency>
-
-        <!--xbean-spring-->
-        <dependency>
-            <groupId>org.apache.xbean</groupId>
-            <artifactId>xbean-spring</artifactId>
-            <version>4.5</version>
-        </dependency>
 
     </dependencies>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -344,6 +332,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <build>
         <finalName>zjcscut</finalName>
         <plugins>
