@@ -318,6 +318,18 @@
             <version>2.2.7</version>
         </dependency>
 
+        <!--nutz-->
+        <dependency>
+            <groupId>org.nutz</groupId>
+            <artifactId>nutz</artifactId>
+            <version>1.r.57.r3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.enilu.tools</groupId>
+            <artifactId>nutzwk-code-generator</artifactId>
+            <version>1.1</version>
+        </dependency>
 
     </dependencies>
 
@@ -379,16 +391,16 @@
                 </includes>
             </resource>
             <resource>
-            <directory>src/main/resources</directory>
-            <includes>
-                <include>**/*.xml</include>
-                <include>**/*.fxml</include>
-                <!--工作流的文件-->
-                <include>**/*.bpmn</include>
-                <include>**/*.ftl</include>
-                <include>**/*.properties</include>
-            </includes>
-        </resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                    <include>**/*.fxml</include>
+                    <!--工作流的文件-->
+                    <include>**/*.bpmn</include>
+                    <include>**/*.ftl</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
 
             <resource>
                 <directory>src/test/resources</directory>

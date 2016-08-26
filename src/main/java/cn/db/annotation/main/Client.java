@@ -8,7 +8,11 @@
 package cn.db.annotation.main;
 
 import cn.db.annotation.DBGenerator;
+import cn.db.annotation.converter.DataBases;
+import cn.db.annotation.converter.MysqlTypeContainer;
 import cn.db.annotation.impl.DBGeneratorImpl;
+
+import java.util.Map;
 
 /**
  * @author zhangjinci
@@ -17,8 +21,9 @@ import cn.db.annotation.impl.DBGeneratorImpl;
  */
 public class Client {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         DBGenerator dbGenerator = new DBGeneratorImpl();
-        System.out.println(dbGenerator.generate(User.class));
+        System.out.println(dbGenerator.generate(User.class, DataBases.MYSQL));
+
     }
 }

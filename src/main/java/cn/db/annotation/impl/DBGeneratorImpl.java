@@ -12,6 +12,7 @@ import cn.db.annotation.anno.Column;
 import cn.db.annotation.anno.Id;
 import cn.db.annotation.anno.Table;
 import cn.db.annotation.converter.DataBases;
+import cn.db.annotation.converter.MysqlTypeContainer;
 import cn.db.annotation.exception.CustomException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,6 +20,7 @@ import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 /**
  * @author zhangjinci
@@ -27,6 +29,8 @@ import java.lang.reflect.Method;
  */
 public class DBGeneratorImpl implements DBGenerator {
 
+    private Map<Class<?>, String> converter;
+
     /**
      * 根据类的注解信息生成表sql
      *
@@ -34,7 +38,7 @@ public class DBGeneratorImpl implements DBGenerator {
      * @return
      */
     @Override
-    public String generate(Class clazz) {
+    public String generate(Class clazz, DataBases dataBases) {
         if (!clazz.isAnnotationPresent(Table.class)) {
             throw new CustomException("No Annotation[Table] founded in class[" + clazz.getName() + "]", "-1");
         }
@@ -80,7 +84,7 @@ public class DBGeneratorImpl implements DBGenerator {
                     offset = maxLength - col.name().length();  //获取字段名称的最大长度,用于控制格式
                     writeBlankSpace(sb, offset);
                     writeBlankSpace(sb, 1);
-                    sb.append(convertJavaToOracle(field, col)); //转化为Oracle字段形式(这里最好加入多种数据库的转换逻辑)
+                    sb.append(convertJavaToMysql(field, col)); //转化为Oracle字段形式(这里最好加入多种数据库的转换逻辑)
                     if (md.isAnnotationPresent(Id.class)) {
                         sb.append(" not null");
                         primaryKey = col.name();
@@ -168,7 +172,17 @@ public class DBGeneratorImpl implements DBGenerator {
      * @return
      */
     private String convertJavaToMysql(Field field, Column col) {
-        return null;
+
+        String type = "";
+        converter = MysqlTypeContainer.getContainer();
+
+        if (converter.containsKey(field.getType())) {
+            type = converter.get(field.getType());
+            if ((String.class).equals(field.getType())) {
+                type += "(" + col.length() + ")";
+            }
+        }
+        return type;
     }
 
     /**

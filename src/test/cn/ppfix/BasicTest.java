@@ -6,7 +6,7 @@
  * Please do not del these words when you share or copy this file
  */
 
-package cn.pp;
+package cn.ppfix;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

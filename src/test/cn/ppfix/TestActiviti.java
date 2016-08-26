@@ -1,4 +1,4 @@
-package cn.pp;
+package cn.ppfix;
 
 import org.activiti.engine.*;
 import org.activiti.engine.history.HistoricProcessInstance;
@@ -13,7 +13,7 @@ import java.util.List;
  * @author zhangjinci
  * @version 2016/7/4 18:14
  */
-public class TestActiviti extends cn.pp.BasicTest {
+public class TestActiviti extends cn.ppfix.BasicTest {
 
 //    @Autowired
 //    private ProcessEngineFactoryBean processEngine;
