@@ -1,21 +1,93 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zhangjinci
-  Date: 2016/6/8
-  Time: 9:02
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="z" uri="https://github/zjcscut/taglib" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>Scala SpringMVC</title>
-</head>
-<body>
-<h2>Hello Scala & SpringMVC,I am ${name}</h2>
-<%--<h1>四舍五入</h1>--%>
-<%--<h3><z:roundHalfUp value="6.4455" leaveBits="2"/></h3>--%>
+    <title>ActiveMQ Demo程序</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/jquery/jquery.min.js"></script>
+    <style type="text/css">
+        .h1 {
+            margin: 0 auto;
+        }
 
+        #producer{
+            width: 48%;
+            border: 1px solid blue;
+            height: 80%;
+            align:center;
+            margin:0 auto;
+        }
+
+        body{
+            text-align :center;
+        }
+        div {
+            text-align :center;
+        }
+        textarea{
+            width:80%;
+            height:100px;
+            border:1px solid gray;
+        }
+        button{
+            background-color: rgb(62, 156, 66);
+            border: none;
+            font-weight: bold;
+            color: white;
+            height:30px;
+        }
+    </style>
+    <script type="text/javascript">
+
+        function send(controller){
+            if($("#message").val()==""){
+                $("#message").css("border","1px solid red");
+                return;
+            }else{
+                $("#message").css("border","1px solid gray");
+            }
+            $.ajax({
+                type: 'post',
+                url:'<%=request.getContextPath()%>/activemq/'+controller,
+                dataType:'text',
+                data:{"message":$("#message").val()},
+                success:function(data){
+                    if(data=="suc"){
+                        $("#status").html("<font color=green>发送成功</font>");
+                        setTimeout(clear,1000);
+                    }else{
+                        $("#status").html("<font color=red>"+data+"</font>");
+                        setTimeout(clear,5000);
+                    }
+                },
+                error:function(data){
+                    $("#status").html("<font color=red>ERROR:"+data["status"]+","+data["statusText"]+"</font>");
+                    setTimeout(clear,5000);
+                }
+
+            });
+        }
+
+        function clear(){
+            $("#status").html("");
+        }
+
+    </script>
+</head>
+
+<body>
+<h1>Hello ActiveMQ</h1>
+<div id="producer">
+    <h2>Producer</h2>
+    <textarea id="message"></textarea>
+    <br>
+    <button onclick="send('queueSender')">发送Queue消息</button>
+    <button onclick="send('topicSender')">发送Topic消息</button>
+    <br>
+    <span id="status"></span>
+</div>
 </body>
 </html>
+
