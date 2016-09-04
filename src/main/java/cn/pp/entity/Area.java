@@ -99,4 +99,14 @@ public class Area implements java.io.Serializable {
 //    public void setNodes(Set<Area> nodes) {
 //        this.nodes = nodes;
 //    }
+
+
+	@Override
+	public String toString() {
+		return "Area{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", pid=" + pid +
+				'}';
+	}
 }

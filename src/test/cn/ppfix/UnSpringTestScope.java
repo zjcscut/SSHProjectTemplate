@@ -123,4 +123,11 @@ public class UnSpringTestScope {
 //        engine.compile("test12",sourceCode2);
 //        System.out.println(engine.execute("test12"));
     }
+
+    @Test
+    public void Test5(){
+        String s = "\":30";
+
+        System.out.println(JsonUtil.toJson(s));
+    }
 }

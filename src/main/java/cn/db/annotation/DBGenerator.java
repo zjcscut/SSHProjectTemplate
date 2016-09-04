@@ -8,6 +8,8 @@
 package cn.db.annotation;
 
 
+import cn.db.annotation.converter.DataBases;
+
 import java.lang.reflect.Field;
 
 /**
@@ -18,7 +20,7 @@ import java.lang.reflect.Field;
  */
 public interface DBGenerator {
 
-    String generate(Class clazz);
+    String generate(Class clazz, DataBases dataBases);
 
     String generateFields(Class clazz, StringBuilder sb, Field[] fields,int maxLength);
 

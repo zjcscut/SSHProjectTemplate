@@ -6,7 +6,6 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:cache="http://www.springframework.org/schema/cache"
        xmlns:jms="http://www.springframework.org/schema/jms"
-       xmlns:amq="http://activemq.apache.org/schema/core"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
        http://www.springframework.org/schema/tx
@@ -19,12 +18,10 @@
        http://www.springframework.org/schema/cache/spring-cache-4.2.xsd
         http://www.springframework.org/schema/jms
         http://www.springframework.org/schema/jms/spring-jms-4.2.xsd
-        http://activemq.apache.org/schema/core
-        http://activemq.apache.org/schema/core/activemq-core-5.13.4.xsd
       ">
 
     <!--扫描除了Controller之外的类-->
-    <context:component-scan base-package="cn.pp,cn.zjcscut,cn.zjc.scala,cn.echartpro,cn.activemq">
+    <context:component-scan base-package="cn.pp,cn.zjcscut,cn.zjc.scala,cn.echartpro,cn.nutz">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -79,15 +76,15 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="format_sql">false</prop>
-                <!-- 开启查询缓存 -->
-                <prop key="hibernate.cache.use_query_cache">true</prop>
-                <!-- 开启二级缓存 -->
-                <prop key="hibernate.cache.use_second_level_cache">true</prop>
-                <!-- 高速缓存提供程序 -->
-                <!-- 由于spring也使用了Ehcache, 保证双方都使用同一个缓存管理器 -->
-                <prop key="hibernate.cache.region.factory_class">
-                    org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
-                </prop>
+                <!--&lt;!&ndash; 开启查询缓存 &ndash;&gt;-->
+                <!--<prop key="hibernate.cache.use_query_cache">true</prop>-->
+                <!--&lt;!&ndash; 开启二级缓存 &ndash;&gt;-->
+                <!--<prop key="hibernate.cache.use_second_level_cache">true</prop>-->
+                <!--&lt;!&ndash; 高速缓存提供程序 &ndash;&gt;-->
+                <!--&lt;!&ndash; 由于spring也使用了Ehcache, 保证双方都使用同一个缓存管理器 &ndash;&gt;-->
+                <!--<prop key="hibernate.cache.region.factory_class">-->
+                    <!--org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory-->
+                <!--</prop>-->
                 <!--create validate -->
                 <!--<prop key="hibernate.hbm2ddl.auto">update</prop>-->
             </props>
@@ -137,6 +134,11 @@
         <property name="cacheManager" ref="ehcacheManagerFactory"/>
     </bean>
 
+
+    <!--整合nutz dao-->
+    <bean id="nutDao" class="org.nutz.dao.impl.NutDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 
     <!--添加activiti配置文件-->

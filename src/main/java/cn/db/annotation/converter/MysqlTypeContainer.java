@@ -11,6 +11,7 @@ package cn.db.annotation.converter;
 import java.util.HashMap;
 import java.util.Map;
 import java.lang.*;
+
 /**
  * @author zhangjinci
  * @version 2016/8/22 18:53
@@ -26,16 +27,16 @@ public class MysqlTypeContainer {
 
     static {
         container.put(java.util.Date.class, "DATETIME");
-        container.put(java.sql.Date.class,"DATE");
-        container.put(Long.class,"BIGINT");
-        container.put(Integer.class,"INT");
-        container.put(String.class,"VARCHAR");
-        container.put(Float.class,"FLOAT");
-        container.put(Double.class,"DOUBLE");
-        container.put(Boolean.class,"BOOLEAN");
-        container.put(String.class,"CHAR");
-        container.put(String.class,"TEXT");
-        container.put(java.math.BigDecimal.class,"DECIMAL");
+        container.put(java.sql.Date.class, "DATE");
+        container.put(Long.class, "BIGINT");
+        container.put(Integer.class, "INT");
+        container.put(String.class, "VARCHAR");
+        container.put(Float.class, "FLOAT");
+        container.put(Double.class, "DOUBLE");
+        container.put(Boolean.class, "BOOLEAN");
+//        container.put(String.class, "CHAR");
+//        container.put(String.class, "TEXT");
+        container.put(java.math.BigDecimal.class, "DECIMAL");
     }
 
     public static Map<Class<?>, String> getContainer() {
