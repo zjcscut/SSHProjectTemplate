@@ -4,6 +4,7 @@ import cn.pp.common.annotation.JsonResponse;
 import cn.pp.entity.Area;
 import cn.pp.service.AreaService;
 import cn.pp.utils.JsonUtil;
+import cn.pp.vo.RepVo;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -124,10 +125,19 @@ public class AreaController {
 
     @RequestMapping(value = "value/text.html")
     @ResponseBody
-    public String text(){
+    public String text() {
         String s = "\":30";
 
         return JsonUtil.toJson(s);
+    }
+
+    @RequestMapping(value = "test/push")
+    @ResponseBody
+    public String push(@RequestParam("sign") String sign, @RequestParam("base64Str") String base64Str) {
+        System.out.println("接收到的sign:==>" + sign);
+        System.out.println("接收到的Json:==>" + base64Str);
+        RepVo vo = new RepVo("00", "失败啊好悲惨");
+        return JsonUtil.toJson(vo);
     }
 
 }
