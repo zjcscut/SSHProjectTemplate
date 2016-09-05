@@ -5,16 +5,12 @@
  * Any bugs were found please contact me at 739805340scut@gmail.com
  */
 
-package cn.aop.config;
-
-import org.aspectj.lang.annotation.Pointcut;
+package cn.aop.config.advice;
 
 /**
  * @author zhangjinci
- * @version 2016/8/26 18:38
+ * @version 2016/9/2 18:55
  * @function
  */
-public class PointCutFactory {
-
-
+public class Before implements Advice{
 }

@@ -1,0 +1,30 @@
+@startuml
+
+interface AopProxy{
+ Object getProxy()
+ Object getProxy(ClassLoader classLoader)
+}
+
+interface InvocationHandler{
+
+}
+
+
+class CglibAopProxy{
+
+}
+
+class JdkDynamicAopProxy{
+
+}
+
+
+
+
+AopProxy <|-- JdkDynamicAopProxy
+
+InvocationHandler <|-- JdkDynamicAopProxy
+
+AopProxy <|-- CglibAopProxy
+
+@enduml
