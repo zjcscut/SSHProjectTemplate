@@ -39,6 +39,7 @@ public class Client {
             @Override
             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
                 System.out.println("before intercept...");
+                System.out.println("args array:" + objects[0]);
                 return "intercept";
             }
         });
