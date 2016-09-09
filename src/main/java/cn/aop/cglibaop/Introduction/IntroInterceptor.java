@@ -5,7 +5,7 @@
  * Any bugs were found please contact me at 739805340scut@gmail.com
  */
 
-package cn.aop.cglibaop;
+package cn.aop.cglibaop.Introduction;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
