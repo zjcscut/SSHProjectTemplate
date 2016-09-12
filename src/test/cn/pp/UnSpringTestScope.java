@@ -145,15 +145,6 @@ public class UnSpringTestScope {
     }
 
     @Test
-    public void Test() {
-        Map<String, String> params = new HashMap<>(2);
-        params.put("id", "1");
-        params.put("name", "zjc");
-        String re = HttpUtils.getInstance().setDefaultHeader("header1", "value1").doGet("http://localhost:9090/sys/hello2.html", params).getContent();
-        System.out.println("result:" + re);
-    }
-
-    @Test
     public void testUpload() {
         Map<String, String> params = new HashMap<>(1);
         params.put("name", "zjc");
@@ -166,7 +157,10 @@ public class UnSpringTestScope {
 
     @Test
     public void doChainPost() {
-        String re = HttpUtils.getInstance().doPost("http://localhost:9090/sys/area/update.html?id=1").getContent();
+        String re = HttpUtils.getInstance()
+				.addParameter("name","zjc")
+				.addHeader("ContentType","application/x-www-form-urlencoded")
+				.doGet("http://localhost:9090/sys/hello2.html?id=1").getContent();
 //      String re=   HttpUtils.getInstance().doGet("http://localhost:9090/sys/area/update.html?id=1").getContent();
         System.out.println("result==>" + re);
     }
