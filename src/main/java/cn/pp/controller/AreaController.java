@@ -13,8 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -131,13 +137,39 @@ public class AreaController {
         return JsonUtil.toJson(s);
     }
 
-    @RequestMapping(value = "test/push")
+    @RequestMapping(value = "test/push/postFile.html", method = RequestMethod.POST)
     @ResponseBody
-    public String push(@RequestParam("sign") String sign, @RequestParam("base64Str") String base64Str) {
-        System.out.println("接收到的sign:==>" + sign);
-        System.out.println("接收到的Json:==>" + base64Str);
-        RepVo vo = new RepVo("00", "失败啊好悲惨");
-        return JsonUtil.toJson(vo);
+    public String push(HttpServletRequest request,@RequestParam("name") String name) {
+
+        System.out.println("name==>" + name);
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getServletContext());
+        if (multipartResolver.isMultipart(request)) {
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+            Iterator<String> iterator = multiRequest.getFileNames();
+            while (iterator.hasNext()) {
+                MultipartFile file = multiRequest.getFile(iterator.next());
+                if (file != null) {
+                    String fileName = file.getOriginalFilename();
+                    if (fileName != null && !"".equals(fileName.trim())) {
+                        System.out.println("上传的文件名:==>" + fileName);
+                        String finalName = "uploadDemo//" + fileName;
+                        String path = "D://" + finalName;
+                        File localFile = new File(path);
+                        if (!localFile.exists()){
+                            localFile.mkdirs();
+                        }
+                        try {
+                            file.transferTo(localFile);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
+        return "success";
+
     }
+
 
 }

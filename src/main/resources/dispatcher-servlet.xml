@@ -25,6 +25,8 @@
             <!--字符串编码转换-->
             <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
                 <constructor-arg value="UTF-8"/>
+                <!--不返回全部Accept-Charset-->
+                <property name="writeAcceptCharset" value="false"/>
             </bean>
             <!--配置fastjson-->
             <bean id="fastJsonHttpMessageConverter"
@@ -62,11 +64,11 @@
     </bean>
 
     <!--上传文件配置-->
-    <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
-        <!--<property name="defaultEncoding" value="utf-8"/>-->
-        <!--<property name="maxUploadSize" value="10485760"/>-->
-        <!--<property name="maxInMemorySize" value="40960"/>-->
-    <!--</bean>-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="10485760"/>
+        <property name="maxInMemorySize" value="40960"/>
+    </bean>
     <!--默认开启Cglib代理-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 

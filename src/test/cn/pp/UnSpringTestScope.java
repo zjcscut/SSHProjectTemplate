@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) zjc@scut 2016~
+ * Free of All
+ * Help Yourselves!
+ * Any bugs were found please contact me at 739805340scut@gmail.com
+ */
+
 package cn.pp;
 
 import cn.framework.common.DynamicScriptEngineFactory;
@@ -7,12 +14,17 @@ import cn.framework.js.JavaScriptEngine;
 import cn.pp.common.annotation.impl.CustomSimplePropertyPreFilter;
 import cn.pp.entity.Area;
 import cn.pp.utils.JsonUtil;
+import cn.util.http.HttpUtils;
 import cn.zjcscut.compile.cmd.DynamicCompileWithCmd;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -58,41 +70,41 @@ public class UnSpringTestScope {
     @Test
     public void Test4() throws Exception {
         String code = "var s = name;\n print('Hello ' + s);";
-        JavaScriptEngine javaScriptEngine = (JavaScriptEngine)DynamicScriptEngineFactory.getEngine("js");
+        JavaScriptEngine javaScriptEngine = (JavaScriptEngine) DynamicScriptEngineFactory.getEngine("js");
         javaScriptEngine.compile("test1", code);
-        Map<String,Object> params = new HashMap<>();
-        params.put("name","zjcscut");
-        ExecuteResult result = javaScriptEngine.execute("tesddt1",params);
-       String  s = javaScriptEngine.getScriptContext("test1").getSign();
+        Map<String, Object> params = new HashMap<>();
+        params.put("name", "zjcscut");
+        ExecuteResult result = javaScriptEngine.execute("tesddt1", params);
+        String s = javaScriptEngine.getScriptContext("test1").getSign();
         System.out.println("result---- > " + s);
     }
 
     @Test
-	public void TestJson(){
-    	String[] s = {"id","name"};
-		Area area = new Area();
-		area.setName("广州");
-		area.setId(1);
-		area.setPid(2);
-		Area area1 = new Area();
-		area1.setId(12);
-		area1.setName("北京");
-		area1.setPid(22);
-		Map<String,Object> map = new HashMap<>();
-		List<Area> list = new ArrayList<>();
-		list.add(area);
-		list.add(area1);
-		map.put("area",area);
-		map.put("area1",area1);
-		map.put("result",list);
-		CustomSimplePropertyPreFilter filter = new CustomSimplePropertyPreFilter();
-		filter.getExcludes().add("id");
-		filter.getExcludes().add("name");
-		System.out.println(JSON.toJSONString(map,filter));
-	}
+    public void TestJson() {
+        String[] s = {"id", "name"};
+        Area area = new Area();
+        area.setName("广州");
+        area.setId(1);
+        area.setPid(2);
+        Area area1 = new Area();
+        area1.setId(12);
+        area1.setName("北京");
+        area1.setPid(22);
+        Map<String, Object> map = new HashMap<>();
+        List<Area> list = new ArrayList<>();
+        list.add(area);
+        list.add(area1);
+        map.put("area", area);
+        map.put("area1", area1);
+        map.put("result", list);
+        CustomSimplePropertyPreFilter filter = new CustomSimplePropertyPreFilter();
+        filter.getExcludes().add("id");
+        filter.getExcludes().add("name");
+        System.out.println(JSON.toJSONString(map, filter));
+    }
 
-	@Test
-    public void TestJavaEngine() throws Exception{
+    @Test
+    public void TestJavaEngine() throws Exception {
         JavaEngine javaEngine = new JavaEngine();
         String sourceCode = "package cn.zjc.compile;\n" +
                 "\n" +
@@ -105,7 +117,7 @@ public class UnSpringTestScope {
                 "      System.out.println(\"Hello World! Today is \" + new SimpleDateFormat(\"yyyy-MM-dd HH:mm:ss\").format(new Date()));\n" +
                 "  }\n" +
                 "}";
-        javaEngine.compile("test1",sourceCode);
+        javaEngine.compile("test1", sourceCode);
         System.out.println(javaEngine.execute("test1"));
 
 //        JavaEngine engine = new JavaEngine();
@@ -125,9 +137,44 @@ public class UnSpringTestScope {
     }
 
     @Test
-    public void Test5(){
-        String s = "\":30";
+    public void Test5() {
+        String s = "http://www.baidu.com";
+        String[] arr = s.split("\\?");
+        System.out.println("re.length==>" + arr.length);
+        System.out.println("re==>" + Arrays.toString(arr));
+    }
 
-        System.out.println(JsonUtil.toJson(s));
+    @Test
+    public void Test() {
+        Map<String, String> params = new HashMap<>(2);
+        params.put("id", "1");
+        params.put("name", "zjc");
+        String re = HttpUtils.getInstance().setDefaultHeader("header1", "value1").doGet("http://localhost:9090/sys/hello2.html", params).getContent();
+        System.out.println("result:" + re);
+    }
+
+    @Test
+    public void testUpload() {
+        Map<String, String> params = new HashMap<>(1);
+        params.put("name", "zjc");
+        List<File> files = new ArrayList<>(2);
+        files.add(new File("D://1.txt"));
+        files.add(new File("D://2.txt"));
+        String re = HttpUtils.getInstance().doMultiPost("http://localhost:9090/sys/test/push/postFile.html", null, params, files).getContent();
+        System.out.println("result==>" + re);
+    }
+
+    @Test
+    public void doChainPost() {
+        String re = HttpUtils.getInstance().doPost("http://localhost:9090/sys/area/update.html?id=1").getContent();
+//      String re=   HttpUtils.getInstance().doGet("http://localhost:9090/sys/area/update.html?id=1").getContent();
+        System.out.println("result==>" + re);
+    }
+
+    @Test
+    public void TestEmptyList() {
+        List EMPTY_LIST = Collections.EMPTY_LIST;
+        assertEquals(EMPTY_LIST != null, true);
+        assertEquals(EMPTY_LIST.isEmpty(),true);
     }
 }
