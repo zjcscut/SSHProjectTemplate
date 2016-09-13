@@ -10,17 +10,21 @@ package cn.nutz.dao;
 import org.nutz.dao.impl.NutDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author zhangjinci
  * @version 2016/8/25 9:46
  * @function
  */
+@Repository
 public abstract class BaseDao<T> {
 
     @Autowired
     @Qualifier("nutDao")
-    private NutDao nutDao;
+    protected NutDao nutDao;
+
+    protected Class<T> entityClass;
 
     public <T> T insert(T entity) {
         return nutDao.insert(entity);
@@ -41,4 +45,5 @@ public abstract class BaseDao<T> {
     public int delete(Class<T> clazz, Integer id) {
         return nutDao.delete(clazz, id);
     }
+
 }

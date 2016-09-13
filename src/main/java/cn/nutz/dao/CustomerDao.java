@@ -8,6 +8,8 @@
 package cn.nutz.dao;
 
 import cn.nutz.entity.Customer;
+import org.nutz.dao.Sqls;
+import org.nutz.dao.sql.Sql;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -38,5 +40,13 @@ public class CustomerDao extends BaseDao<Customer> {
 
     public int delete(Class<Customer> clazz, Integer id) {
         return super.delete(clazz, id);
+    }
+
+    public void test(){
+        Sql sql = super.nutDao.sqls().create("demo");
+        sql.params().set("id",1);
+        sql.setCallback(Sqls.callback.entity());
+        nutDao.execute(sql);
+        System.out.println(sql.getObject(Customer.class));
     }
 }

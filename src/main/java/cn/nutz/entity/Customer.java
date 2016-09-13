@@ -64,5 +64,12 @@ public class Customer {
         this.birth = birth;
     }
 
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birth=" + birth +
+                '}';
+    }
 }

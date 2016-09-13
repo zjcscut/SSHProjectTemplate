@@ -157,11 +157,14 @@ public class UnSpringTestScope {
 
     @Test
     public void doChainPost() {
+        Map<String, String> params = new HashMap<>(2);
+        params.put("name", "zjc");
         String re = HttpUtils.getInstance()
-				.addParameter("name","zjc")
-				.addHeader("ContentType","application/x-www-form-urlencoded")
-				.doGet("http://localhost:9090/sys/hello2.html?id=1").getContent();
-//      String re=   HttpUtils.getInstance().doGet("http://localhost:9090/sys/area/update.html?id=1").getContent();
+                .addHeader("header1","value1")
+                .addParameter("id","1")
+                .doPost("http://localhost:9090/http/post.html",params)
+//                .doGet("http://localhost:9090/http/post.html",params)
+                .getContent();
         System.out.println("result==>" + re);
     }
 
@@ -169,6 +172,21 @@ public class UnSpringTestScope {
     public void TestEmptyList() {
         List EMPTY_LIST = Collections.EMPTY_LIST;
         assertEquals(EMPTY_LIST != null, true);
-        assertEquals(EMPTY_LIST.isEmpty(),true);
+        assertEquals(EMPTY_LIST.isEmpty(), true);
+    }
+
+    @Test
+    public void doChainMulti(){
+
+        List<File> files = new ArrayList<>(2);
+        files.add(new File("D://1.txt"));
+        files.add(new File("D://2.txt"));
+        Map<String, String> params = new HashMap<>(2);
+        params.put("name", "zjc");
+       String re=  HttpUtils.getInstance()
+               .addParameter("id","1")
+               .doMultiPost("http://localhost:9090/http/multi.html",params,files)
+               .getContent();
+        System.out.println("result==>" + re);
     }
 }

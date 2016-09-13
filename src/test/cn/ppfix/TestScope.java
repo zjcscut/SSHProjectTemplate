@@ -9,6 +9,7 @@
 package cn.ppfix;
 
 import cn.echartpro.service.EchartsService;
+import cn.nutz.dao.CustomerDao;
 import cn.pp.entity.Area;
 import cn.pp.service.AreaService;
 import cn.pp.service.CategoryService;
@@ -112,5 +113,13 @@ public class TestScope extends BasicTest {
 	@Test
 	public void Test10(){
 		System.out.println(echartsService.getData());
+	}
+
+	@Autowired
+	private CustomerDao customerDao;
+
+	@Test
+	public void Test11(){
+		customerDao.test();
 	}
 }
