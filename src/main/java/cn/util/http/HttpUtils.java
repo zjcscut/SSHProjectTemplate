@@ -92,7 +92,7 @@ import java.util.*;
  * System.out.println("result==>" + re);
  * }
  */
-public class HttpUtils implements Closeable{
+public class HttpUtils implements AutoCloseable{
 
     private static final Logger log = LoggerFactory.getLogger(HttpUtils.class);
 
@@ -708,7 +708,7 @@ public class HttpUtils implements Closeable{
     //释放资源
     @Override
     public void close() throws IOException {
-        this.headers = Collections.emptyList();
-        this.params = Collections.emptyList();
+        this.headers.clear();
+        this.params.clear();
     }
 }
