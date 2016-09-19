@@ -52,18 +52,22 @@ public class HttpRequest {
     public String getUrlEncodedParams() {
         final StringBuffer buffer = new StringBuffer();
         if (params != null && !params.isEmpty()) {
-            for (Map.Entry<String,String> entry:params.entrySet()){
+            for (Map.Entry<String, String> entry : params.entrySet()) {
 
             }
         }
-        if (buffer.length() > 0){
+        if (buffer.length() > 0) {
             buffer.setLength(buffer.length() - 1); //去掉最后那个'&'
         }
         return buffer.toString();
     }
 
     public HttpRequest setUrl(String url) {
-        this.url = url;
+        if (null != url && url.contains("://")) {
+            this.url += "http://" + url;
+        } else {
+            this.url = url;
+        }
         return this;
     }
 
@@ -143,27 +147,27 @@ public class HttpRequest {
         return METHOD.DELETE == this.method;
     }
 
-    public boolean isPost(){
+    public boolean isPost() {
         return METHOD.POST == this.method;
     }
 
-    public boolean isPut(){
+    public boolean isPut() {
         return METHOD.PUT == this.method;
     }
 
-    public boolean isOption(){
+    public boolean isOption() {
         return METHOD.OPTIONS == this.method;
     }
 
-    public boolean isTrace(){
+    public boolean isTrace() {
         return METHOD.TRACE == this.method;
     }
 
-    public boolean isConnect(){
+    public boolean isConnect() {
         return METHOD.CONNECT == this.method;
     }
 
-    public boolean isHead(){
+    public boolean isHead() {
         return METHOD.HEAD == this.method;
     }
 }

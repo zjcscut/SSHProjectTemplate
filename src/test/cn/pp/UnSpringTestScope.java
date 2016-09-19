@@ -12,9 +12,10 @@ import cn.framework.entity.ExecuteResult;
 import cn.framework.java.JavaEngine;
 import cn.framework.js.JavaScriptEngine;
 import cn.pp.common.annotation.impl.CustomSimplePropertyPreFilter;
-import cn.pp.entity.Area;
+import cn.pp.entity.*;
 import cn.pp.utils.JsonUtil;
 import cn.util.http.HttpUtils;
+import cn.util.reflect.ReflectionUtils;
 import cn.zjcscut.compile.cmd.DynamicCompileWithCmd;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
@@ -25,6 +26,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -160,9 +163,9 @@ public class UnSpringTestScope {
         Map<String, String> params = new HashMap<>(2);
         params.put("name", "zjc");
         String re = HttpUtils.getInstance()
-                .addHeader("header1","value1")
-                .addParameter("id","1")
-                .doPost("http://localhost:9090/http/post.html",params)
+                .addHeader("header1", "value1")
+                .addParameter("id", "1")
+                .doPost("http://localhost:9090/http/post.html", params)
 //                .doGet("http://localhost:9090/http/post.html",params)
                 .getContent();
         System.out.println("result==>" + re);
@@ -176,17 +179,28 @@ public class UnSpringTestScope {
     }
 
     @Test
-    public void doChainMulti(){
+    public void doChainMulti() {
 
         List<File> files = new ArrayList<>(2);
         files.add(new File("D://1.txt"));
         files.add(new File("D://2.txt"));
         Map<String, String> params = new HashMap<>(2);
         params.put("name", "zjc");
-       String re=  HttpUtils.getInstance()
-               .addParameter("id","1")
-               .doMultiPost("http://localhost:9090/http/multi.html",params,files)
-               .getContent();
+        String re = HttpUtils.getInstance()
+                .addParameter("id", "1")
+                .doMultiPost("http://localhost:9090/http/multi.html", params, files)
+                .getContent();
         System.out.println("result==>" + re);
+    }
+
+    @Test
+    public void TestAccess() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+//        A a = new A(1,"zjc");
+//        Method m = a.getClass().getDeclaredMethod("me",String.class);
+//        ReflectionUtils.setAccessible(m);
+//        Object re = m.invoke(a,"zjcscut");
+//        System.out.println(re);
+
+        assertTrue(ReflectionUtils.isAssignable(I1.class, Impl.class));
     }
 }
