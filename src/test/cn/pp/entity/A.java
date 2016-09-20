@@ -14,6 +14,8 @@ package cn.pp.entity;
  */
 public class A {
 
+    public static final String ss = "ss";
+
     private Integer id;
     private String name;
 
