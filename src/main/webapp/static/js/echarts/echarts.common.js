@@ -754,7 +754,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var updateMethod = actionInfo.update || 'update';
 
 	        // if (__DEV__) {
-	        //     zrUtil.assert(
+	        //     zrUtil.asser(
 	        //         !this[IN_MAIN_PROCESS],
 	        //         '`dispatchAction` should not be called during main process.'
 	        //         + 'unless updateMathod is "none".'

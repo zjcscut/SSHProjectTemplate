@@ -48,7 +48,7 @@ import java.util.*;
  * @author zjc
  * @version 16-9-12 上午12:23
  * @description HttpClient工具类, 方法设计解耦
- *
+ * <p>
  * <!--httpClient 依赖-->
  * <dependency>
  * <groupId>org.apache.httpcomponents</groupId>
@@ -65,7 +65,7 @@ import java.util.*;
  * <artifactId>httpmime</artifactId>
  * <version>4.5.2</version>
  * </dependency>
- *
+ * <p>
  * <code>demo1</code>
  * @Test public void doChainPost() {
  * Map<String, String> params = new HashMap<>(2);
@@ -92,7 +92,7 @@ import java.util.*;
  * System.out.println("result==>" + re);
  * }
  */
-public class HttpUtils implements AutoCloseable{
+public class HttpUtils implements AutoCloseable {
 
     private static final Logger log = LoggerFactory.getLogger(HttpUtils.class);
 
@@ -487,6 +487,8 @@ public class HttpUtils implements AutoCloseable{
                 if (null != httpClient) {
                     httpClient.close();
                 }
+                //释放参数和请求头列表
+                close();
             } catch (IOException e) {
                 log.error(String.format("close httpClient failed:%s", e.getMessage()));
             }
@@ -708,7 +710,11 @@ public class HttpUtils implements AutoCloseable{
     //释放资源
     @Override
     public void close() throws IOException {
-        this.headers.clear();
-        this.params.clear();
+        if (this.headers != null && !this.headers.isEmpty()) {
+            this.headers.clear();
+        }
+        if (this.params != null && !this.params.isEmpty()) {
+            this.params.clear();
+        }
     }
 }
