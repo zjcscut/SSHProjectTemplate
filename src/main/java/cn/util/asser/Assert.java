@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * @author zhangjinci
  * @version 2016/9/21 9:40
- * @function 服务层异常断言，不满足断言会抛出IllegalArgumentException
+ * @function 异常断言，不满足断言会抛出IllegalArgumentException
  */
 public abstract class Assert {
 
